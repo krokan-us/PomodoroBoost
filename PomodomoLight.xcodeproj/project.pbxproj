@@ -597,6 +597,7 @@
 				DEVELOPMENT_TEAM = 7WX6W95X32;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PomodomoLight/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Pomodoro Boost";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -627,6 +628,7 @@
 				DEVELOPMENT_TEAM = 7WX6W95X32;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PomodomoLight/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Pomodoro Boost";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
