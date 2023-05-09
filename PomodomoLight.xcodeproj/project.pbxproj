@@ -1,0 +1,771 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		16AAA7162A091D1A00AE8E3E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16AAA7152A091D1A00AE8E3E /* AppDelegate.swift */; };
+		16AAA7182A091D1A00AE8E3E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16AAA7172A091D1A00AE8E3E /* SceneDelegate.swift */; };
+		16AAA71A2A091D1A00AE8E3E /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16AAA7192A091D1A00AE8E3E /* ActivityViewController.swift */; };
+		16AAA71D2A091D1A00AE8E3E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 16AAA71B2A091D1A00AE8E3E /* Main.storyboard */; };
+		16AAA71F2A091D1B00AE8E3E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 16AAA71E2A091D1B00AE8E3E /* Assets.xcassets */; };
+		16AAA7222A091D1B00AE8E3E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 16AAA7202A091D1B00AE8E3E /* LaunchScreen.storyboard */; };
+		16AAA72D2A091D1B00AE8E3E /* PomodomoLightTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16AAA72C2A091D1B00AE8E3E /* PomodomoLightTests.swift */; };
+		16AAA7372A091D1B00AE8E3E /* PomodomoLightUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16AAA7362A091D1B00AE8E3E /* PomodomoLightUITests.swift */; };
+		16AAA7392A091D1B00AE8E3E /* PomodomoLightUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16AAA7382A091D1B00AE8E3E /* PomodomoLightUITestsLaunchTests.swift */; };
+		16AAA7462A09208A00AE8E3E /* CircularProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16AAA7452A09208A00AE8E3E /* CircularProgressBar.swift */; };
+		16FD00562A0A1F3300CB3F39 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FD00552A0A1F3300CB3F39 /* HistoryViewController.swift */; };
+		49C94174847431968D6B0DCC /* Pods_PomodomoLightTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FC2E547F594D5CE89BC4222 /* Pods_PomodomoLightTests.framework */; };
+		D5FFE220C115ED3758251410 /* Pods_PomodomoLight_PomodomoLightUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59B90C3172103C56E9691C38 /* Pods_PomodomoLight_PomodomoLightUITests.framework */; };
+		DC51786F1620395C39EDBE28 /* Pods_PomodomoLight.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40A0B00835A0C98916FFCCFC /* Pods_PomodomoLight.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		16AAA7292A091D1B00AE8E3E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 16AAA70A2A091D1A00AE8E3E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 16AAA7112A091D1A00AE8E3E;
+			remoteInfo = PomodomoLight;
+		};
+		16AAA7332A091D1B00AE8E3E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 16AAA70A2A091D1A00AE8E3E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 16AAA7112A091D1A00AE8E3E;
+			remoteInfo = PomodomoLight;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		16AAA7122A091D1A00AE8E3E /* PomodomoLight.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PomodomoLight.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		16AAA7152A091D1A00AE8E3E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		16AAA7172A091D1A00AE8E3E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		16AAA7192A091D1A00AE8E3E /* ActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewController.swift; sourceTree = "<group>"; };
+		16AAA71C2A091D1A00AE8E3E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		16AAA71E2A091D1B00AE8E3E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		16AAA7212A091D1B00AE8E3E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		16AAA7232A091D1B00AE8E3E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		16AAA7282A091D1B00AE8E3E /* PomodomoLightTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PomodomoLightTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		16AAA72C2A091D1B00AE8E3E /* PomodomoLightTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PomodomoLightTests.swift; sourceTree = "<group>"; };
+		16AAA7322A091D1B00AE8E3E /* PomodomoLightUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PomodomoLightUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		16AAA7362A091D1B00AE8E3E /* PomodomoLightUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PomodomoLightUITests.swift; sourceTree = "<group>"; };
+		16AAA7382A091D1B00AE8E3E /* PomodomoLightUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PomodomoLightUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		16AAA7452A09208A00AE8E3E /* CircularProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressBar.swift; sourceTree = "<group>"; };
+		16FD00552A0A1F3300CB3F39 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
+		2A04D3A31A83F9A4071B9004 /* Pods-PomodomoLight.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PomodomoLight.release.xcconfig"; path = "Target Support Files/Pods-PomodomoLight/Pods-PomodomoLight.release.xcconfig"; sourceTree = "<group>"; };
+		2FC2E547F594D5CE89BC4222 /* Pods_PomodomoLightTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PomodomoLightTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		40A0B00835A0C98916FFCCFC /* Pods_PomodomoLight.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PomodomoLight.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		59B90C3172103C56E9691C38 /* Pods_PomodomoLight_PomodomoLightUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PomodomoLight_PomodomoLightUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5EBC6A916062FD3B54EC9D71 /* Pods-PomodomoLightTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PomodomoLightTests.release.xcconfig"; path = "Target Support Files/Pods-PomodomoLightTests/Pods-PomodomoLightTests.release.xcconfig"; sourceTree = "<group>"; };
+		62B99D73593FFC5B97AEAE23 /* Pods-PomodomoLight-PomodomoLightUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PomodomoLight-PomodomoLightUITests.release.xcconfig"; path = "Target Support Files/Pods-PomodomoLight-PomodomoLightUITests/Pods-PomodomoLight-PomodomoLightUITests.release.xcconfig"; sourceTree = "<group>"; };
+		69F55910D4812A0848510ACD /* Pods-PomodomoLightTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PomodomoLightTests.debug.xcconfig"; path = "Target Support Files/Pods-PomodomoLightTests/Pods-PomodomoLightTests.debug.xcconfig"; sourceTree = "<group>"; };
+		BA8A8A036FA3195CFFF25772 /* Pods-PomodomoLight-PomodomoLightUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PomodomoLight-PomodomoLightUITests.debug.xcconfig"; path = "Target Support Files/Pods-PomodomoLight-PomodomoLightUITests/Pods-PomodomoLight-PomodomoLightUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		E38822284667E074DC32B41A /* Pods-PomodomoLight.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PomodomoLight.debug.xcconfig"; path = "Target Support Files/Pods-PomodomoLight/Pods-PomodomoLight.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		16AAA70F2A091D1A00AE8E3E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DC51786F1620395C39EDBE28 /* Pods_PomodomoLight.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		16AAA7252A091D1B00AE8E3E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				49C94174847431968D6B0DCC /* Pods_PomodomoLightTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		16AAA72F2A091D1B00AE8E3E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D5FFE220C115ED3758251410 /* Pods_PomodomoLight_PomodomoLightUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		16AAA7092A091D1A00AE8E3E = {
+			isa = PBXGroup;
+			children = (
+				16AAA7142A091D1A00AE8E3E /* PomodomoLight */,
+				16AAA72B2A091D1B00AE8E3E /* PomodomoLightTests */,
+				16AAA7352A091D1B00AE8E3E /* PomodomoLightUITests */,
+				16AAA7132A091D1A00AE8E3E /* Products */,
+				19A86B5A122660A6C687B7EC /* Pods */,
+				44E164E99B2608A7004360C2 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		16AAA7132A091D1A00AE8E3E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				16AAA7122A091D1A00AE8E3E /* PomodomoLight.app */,
+				16AAA7282A091D1B00AE8E3E /* PomodomoLightTests.xctest */,
+				16AAA7322A091D1B00AE8E3E /* PomodomoLightUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		16AAA7142A091D1A00AE8E3E /* PomodomoLight */ = {
+			isa = PBXGroup;
+			children = (
+				16AAA7152A091D1A00AE8E3E /* AppDelegate.swift */,
+				16AAA7172A091D1A00AE8E3E /* SceneDelegate.swift */,
+				16AAA7192A091D1A00AE8E3E /* ActivityViewController.swift */,
+				16FD00552A0A1F3300CB3F39 /* HistoryViewController.swift */,
+				16AAA7452A09208A00AE8E3E /* CircularProgressBar.swift */,
+				16AAA71B2A091D1A00AE8E3E /* Main.storyboard */,
+				16AAA71E2A091D1B00AE8E3E /* Assets.xcassets */,
+				16AAA7202A091D1B00AE8E3E /* LaunchScreen.storyboard */,
+				16AAA7232A091D1B00AE8E3E /* Info.plist */,
+			);
+			path = PomodomoLight;
+			sourceTree = "<group>";
+		};
+		16AAA72B2A091D1B00AE8E3E /* PomodomoLightTests */ = {
+			isa = PBXGroup;
+			children = (
+				16AAA72C2A091D1B00AE8E3E /* PomodomoLightTests.swift */,
+			);
+			path = PomodomoLightTests;
+			sourceTree = "<group>";
+		};
+		16AAA7352A091D1B00AE8E3E /* PomodomoLightUITests */ = {
+			isa = PBXGroup;
+			children = (
+				16AAA7362A091D1B00AE8E3E /* PomodomoLightUITests.swift */,
+				16AAA7382A091D1B00AE8E3E /* PomodomoLightUITestsLaunchTests.swift */,
+			);
+			path = PomodomoLightUITests;
+			sourceTree = "<group>";
+		};
+		19A86B5A122660A6C687B7EC /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E38822284667E074DC32B41A /* Pods-PomodomoLight.debug.xcconfig */,
+				2A04D3A31A83F9A4071B9004 /* Pods-PomodomoLight.release.xcconfig */,
+				BA8A8A036FA3195CFFF25772 /* Pods-PomodomoLight-PomodomoLightUITests.debug.xcconfig */,
+				62B99D73593FFC5B97AEAE23 /* Pods-PomodomoLight-PomodomoLightUITests.release.xcconfig */,
+				69F55910D4812A0848510ACD /* Pods-PomodomoLightTests.debug.xcconfig */,
+				5EBC6A916062FD3B54EC9D71 /* Pods-PomodomoLightTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		44E164E99B2608A7004360C2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				40A0B00835A0C98916FFCCFC /* Pods_PomodomoLight.framework */,
+				59B90C3172103C56E9691C38 /* Pods_PomodomoLight_PomodomoLightUITests.framework */,
+				2FC2E547F594D5CE89BC4222 /* Pods_PomodomoLightTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		16AAA7112A091D1A00AE8E3E /* PomodomoLight */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 16AAA73C2A091D1B00AE8E3E /* Build configuration list for PBXNativeTarget "PomodomoLight" */;
+			buildPhases = (
+				E69316F623C11E2320A3FBF7 /* [CP] Check Pods Manifest.lock */,
+				16AAA70E2A091D1A00AE8E3E /* Sources */,
+				16AAA70F2A091D1A00AE8E3E /* Frameworks */,
+				16AAA7102A091D1A00AE8E3E /* Resources */,
+				F5401F12EA1B91D6BA0A72BA /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PomodomoLight;
+			productName = PomodomoLight;
+			productReference = 16AAA7122A091D1A00AE8E3E /* PomodomoLight.app */;
+			productType = "com.apple.product-type.application";
+		};
+		16AAA7272A091D1B00AE8E3E /* PomodomoLightTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 16AAA73F2A091D1B00AE8E3E /* Build configuration list for PBXNativeTarget "PomodomoLightTests" */;
+			buildPhases = (
+				C04E66D8BB9D4F987F09A8E1 /* [CP] Check Pods Manifest.lock */,
+				16AAA7242A091D1B00AE8E3E /* Sources */,
+				16AAA7252A091D1B00AE8E3E /* Frameworks */,
+				16AAA7262A091D1B00AE8E3E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				16AAA72A2A091D1B00AE8E3E /* PBXTargetDependency */,
+			);
+			name = PomodomoLightTests;
+			productName = PomodomoLightTests;
+			productReference = 16AAA7282A091D1B00AE8E3E /* PomodomoLightTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		16AAA7312A091D1B00AE8E3E /* PomodomoLightUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 16AAA7422A091D1B00AE8E3E /* Build configuration list for PBXNativeTarget "PomodomoLightUITests" */;
+			buildPhases = (
+				C19E5925BE5697C405B48A39 /* [CP] Check Pods Manifest.lock */,
+				16AAA72E2A091D1B00AE8E3E /* Sources */,
+				16AAA72F2A091D1B00AE8E3E /* Frameworks */,
+				16AAA7302A091D1B00AE8E3E /* Resources */,
+				66080987A82AB30F7F860C5B /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				16AAA7342A091D1B00AE8E3E /* PBXTargetDependency */,
+			);
+			name = PomodomoLightUITests;
+			productName = PomodomoLightUITests;
+			productReference = 16AAA7322A091D1B00AE8E3E /* PomodomoLightUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		16AAA70A2A091D1A00AE8E3E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1430;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					16AAA7112A091D1A00AE8E3E = {
+						CreatedOnToolsVersion = 14.3;
+					};
+					16AAA7272A091D1B00AE8E3E = {
+						CreatedOnToolsVersion = 14.3;
+						TestTargetID = 16AAA7112A091D1A00AE8E3E;
+					};
+					16AAA7312A091D1B00AE8E3E = {
+						CreatedOnToolsVersion = 14.3;
+						TestTargetID = 16AAA7112A091D1A00AE8E3E;
+					};
+				};
+			};
+			buildConfigurationList = 16AAA70D2A091D1A00AE8E3E /* Build configuration list for PBXProject "PomodomoLight" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 16AAA7092A091D1A00AE8E3E;
+			productRefGroup = 16AAA7132A091D1A00AE8E3E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				16AAA7112A091D1A00AE8E3E /* PomodomoLight */,
+				16AAA7272A091D1B00AE8E3E /* PomodomoLightTests */,
+				16AAA7312A091D1B00AE8E3E /* PomodomoLightUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		16AAA7102A091D1A00AE8E3E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				16AAA7222A091D1B00AE8E3E /* LaunchScreen.storyboard in Resources */,
+				16AAA71F2A091D1B00AE8E3E /* Assets.xcassets in Resources */,
+				16AAA71D2A091D1A00AE8E3E /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		16AAA7262A091D1B00AE8E3E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		16AAA7302A091D1B00AE8E3E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		66080987A82AB30F7F860C5B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PomodomoLight-PomodomoLightUITests/Pods-PomodomoLight-PomodomoLightUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PomodomoLight-PomodomoLightUITests/Pods-PomodomoLight-PomodomoLightUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PomodomoLight-PomodomoLightUITests/Pods-PomodomoLight-PomodomoLightUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C04E66D8BB9D4F987F09A8E1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PomodomoLightTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C19E5925BE5697C405B48A39 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PomodomoLight-PomodomoLightUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E69316F623C11E2320A3FBF7 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PomodomoLight-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F5401F12EA1B91D6BA0A72BA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PomodomoLight/Pods-PomodomoLight-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PomodomoLight/Pods-PomodomoLight-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PomodomoLight/Pods-PomodomoLight-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		16AAA70E2A091D1A00AE8E3E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				16AAA71A2A091D1A00AE8E3E /* ActivityViewController.swift in Sources */,
+				16AAA7162A091D1A00AE8E3E /* AppDelegate.swift in Sources */,
+				16AAA7182A091D1A00AE8E3E /* SceneDelegate.swift in Sources */,
+				16FD00562A0A1F3300CB3F39 /* HistoryViewController.swift in Sources */,
+				16AAA7462A09208A00AE8E3E /* CircularProgressBar.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		16AAA7242A091D1B00AE8E3E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				16AAA72D2A091D1B00AE8E3E /* PomodomoLightTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		16AAA72E2A091D1B00AE8E3E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				16AAA7372A091D1B00AE8E3E /* PomodomoLightUITests.swift in Sources */,
+				16AAA7392A091D1B00AE8E3E /* PomodomoLightUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		16AAA72A2A091D1B00AE8E3E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 16AAA7112A091D1A00AE8E3E /* PomodomoLight */;
+			targetProxy = 16AAA7292A091D1B00AE8E3E /* PBXContainerItemProxy */;
+		};
+		16AAA7342A091D1B00AE8E3E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 16AAA7112A091D1A00AE8E3E /* PomodomoLight */;
+			targetProxy = 16AAA7332A091D1B00AE8E3E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		16AAA71B2A091D1A00AE8E3E /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				16AAA71C2A091D1A00AE8E3E /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		16AAA7202A091D1B00AE8E3E /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				16AAA7212A091D1B00AE8E3E /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		16AAA73A2A091D1B00AE8E3E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		16AAA73B2A091D1B00AE8E3E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		16AAA73D2A091D1B00AE8E3E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E38822284667E074DC32B41A /* Pods-PomodomoLight.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7WX6W95X32;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PomodomoLight/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = altinisik.mustafa.PomodomoLight;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		16AAA73E2A091D1B00AE8E3E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2A04D3A31A83F9A4071B9004 /* Pods-PomodomoLight.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7WX6W95X32;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PomodomoLight/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = altinisik.mustafa.PomodomoLight;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		16AAA7402A091D1B00AE8E3E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 69F55910D4812A0848510ACD /* Pods-PomodomoLightTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7WX6W95X32;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = altinisik.mustafa.PomodomoLightTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PomodomoLight.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/PomodomoLight";
+			};
+			name = Debug;
+		};
+		16AAA7412A091D1B00AE8E3E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5EBC6A916062FD3B54EC9D71 /* Pods-PomodomoLightTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7WX6W95X32;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = altinisik.mustafa.PomodomoLightTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PomodomoLight.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/PomodomoLight";
+			};
+			name = Release;
+		};
+		16AAA7432A091D1B00AE8E3E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BA8A8A036FA3195CFFF25772 /* Pods-PomodomoLight-PomodomoLightUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7WX6W95X32;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = altinisik.mustafa.PomodomoLightUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = PomodomoLight;
+			};
+			name = Debug;
+		};
+		16AAA7442A091D1B00AE8E3E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 62B99D73593FFC5B97AEAE23 /* Pods-PomodomoLight-PomodomoLightUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7WX6W95X32;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = altinisik.mustafa.PomodomoLightUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = PomodomoLight;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		16AAA70D2A091D1A00AE8E3E /* Build configuration list for PBXProject "PomodomoLight" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				16AAA73A2A091D1B00AE8E3E /* Debug */,
+				16AAA73B2A091D1B00AE8E3E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		16AAA73C2A091D1B00AE8E3E /* Build configuration list for PBXNativeTarget "PomodomoLight" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				16AAA73D2A091D1B00AE8E3E /* Debug */,
+				16AAA73E2A091D1B00AE8E3E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		16AAA73F2A091D1B00AE8E3E /* Build configuration list for PBXNativeTarget "PomodomoLightTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				16AAA7402A091D1B00AE8E3E /* Debug */,
+				16AAA7412A091D1B00AE8E3E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		16AAA7422A091D1B00AE8E3E /* Build configuration list for PBXNativeTarget "PomodomoLightUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				16AAA7432A091D1B00AE8E3E /* Debug */,
+				16AAA7442A091D1B00AE8E3E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 16AAA70A2A091D1A00AE8E3E /* Project object */;
+}
