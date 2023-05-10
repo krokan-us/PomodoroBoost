@@ -6,9 +6,13 @@
 //
 
 import UIKit
+import Lottie
 
 class SettingsViewController: UIViewController {
-
+    
+    var isAnimationPut = false
+    @IBOutlet weak var animationView: UIView!
+    
     @IBOutlet weak var pomodoroSlider: UISlider!
     @IBOutlet weak var shortBreakSlider: UISlider!
     @IBOutlet weak var longBreakSlider: UISlider!
@@ -24,20 +28,21 @@ class SettingsViewController: UIViewController {
    
     override func viewDidLoad() {
         super.viewDidLoad()
+        updateLabels()
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        self.tabBarController?.selectedIndex = 1
+        setButton()
         
+        if !isAnimationPut{
+            putAnimation()
+        }
         // Load the slider values from user defaults
         let defaults = UserDefaults.standard
         pomodoroSlider.value = defaults.float(forKey: "pomodoroDuration")
         shortBreakSlider.value = defaults.float(forKey: "shortBreakDuration")
         longBreakSlider.value = defaults.float(forKey: "longBreakDuration")
         roundsSlider.value = defaults.float(forKey: "rounds")
-        
-        // Update the labels
-        updateLabels()
-    }
-    override func viewWillAppear(_ animated: Bool) {
-        self.tabBarController?.selectedIndex = 1
-        setButton()
     }
     
     @IBAction func pomodoroSliderValueChanged(_ sender: Any) {
@@ -94,5 +99,15 @@ class SettingsViewController: UIViewController {
         defaults.set(longBreakSlider.value, forKey: "longBreakDuration")
         defaults.set(roundsSlider.value, forKey: "rounds")
         defaults.synchronize()
+    }
+    
+    private func putAnimation(){
+        isAnimationPut = true
+        let settingsAnimation = LottieAnimationView(name: "rocketTransperentAnimation")
+        settingsAnimation.frame = animationView.bounds
+        settingsAnimation.contentMode = .scaleAspectFit
+        animationView.addSubview(settingsAnimation)
+        settingsAnimation.loopMode = .loop
+        settingsAnimation.play()
     }
 }
