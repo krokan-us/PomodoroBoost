@@ -13,7 +13,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        let defaults = UserDefaults.standard
+        
+        if defaults.object(forKey: "pomodoroDuration") == nil {
+            defaults.register(defaults: ["pomodoroDuration": 25])
+        }
+        
+        if defaults.object(forKey: "shortBreakDuration") == nil {
+            defaults.register(defaults: ["shortBreakDuration": 5])
+        }
+        
+        if defaults.object(forKey: "longBreakDuration") == nil {
+            defaults.register(defaults: ["longBreakDuration": 30])
+        }
+        
+        if defaults.object(forKey: "rounds") == nil {
+            defaults.register(defaults: ["rounds": 4])
+        }
+
         return true
     }
 
