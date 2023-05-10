@@ -16,6 +16,12 @@ class CircularProgressBar: UIView {
         }
     }
     
+    var barColor: UIColor = .red {
+        didSet {
+            progressLayer.strokeColor = barColor.cgColor
+        }
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         createCircularPath()
@@ -42,7 +48,7 @@ class CircularProgressBar: UIView {
         
         progressLayer.path = circlePath.cgPath
         progressLayer.fillColor = UIColor.clear.cgColor
-        progressLayer.strokeColor = UIColor.red.cgColor
+        progressLayer.strokeColor = barColor.cgColor
         progressLayer.lineWidth = 15.0
         progressLayer.strokeEnd = 0.0
         layer.addSublayer(progressLayer)
