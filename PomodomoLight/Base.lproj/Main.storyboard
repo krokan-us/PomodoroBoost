@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EoP-xE-g12" customClass="CircularProgressBar" customModule="PomodomoLight" customModuleProvider="target">
-                                <rect key="frame" x="71.666666666666686" y="159" width="250" height="250"/>
+                                <rect key="frame" x="71.666666666666686" y="165" width="250" height="250"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="250" id="k6F-RX-FT4"/>
@@ -26,13 +26,13 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="25:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="02Z-iP-ce1">
-                                <rect key="frame" x="123.33333333333333" y="444" width="146.33333333333337" height="60"/>
+                                <rect key="frame" x="123.33333333333333" y="450" width="146.33333333333337" height="60"/>
                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="50"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ndh-3o-YLE">
-                                <rect key="frame" x="100" y="539" width="193" height="40"/>
+                                <rect key="frame" x="100" y="545" width="193" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="eyC-tU-Lip"/>
                                 </constraints>
@@ -43,7 +43,7 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ela-en-dif">
-                                <rect key="frame" x="141.66666666666666" y="637.33333333333337" width="110" height="20.333333333333371"/>
+                                <rect key="frame" x="141.66666666666666" y="643.33333333333337" width="110" height="20.333333333333371"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="mmj-7a-BYY">
                                         <rect key="frame" x="0.0" y="0.99999999999999822" width="20" height="19"/>
@@ -76,8 +76,14 @@
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Completed Pomodoros" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="syC-oF-Sem">
-                                <rect key="frame" x="110.66666666666667" y="609" width="171.66666666666663" height="20.333333333333371"/>
+                                <rect key="frame" x="110.66666666666667" y="615" width="171.66666666666663" height="20.333333333333371"/>
                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Work harder." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="itn-fj-V9U">
+                                <rect key="frame" x="4" y="75" width="385" height="30"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -85,6 +91,7 @@
                         <viewLayoutGuide key="safeArea" id="g4F-Bv-xPp"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="itn-fj-V9U" firstAttribute="leading" secondItem="g4F-Bv-xPp" secondAttribute="leading" constant="4" id="1wc-jm-R1w"/>
                             <constraint firstItem="ela-en-dif" firstAttribute="centerX" secondItem="HSo-hP-6LH" secondAttribute="centerX" id="2Pi-c9-1ak"/>
                             <constraint firstItem="ndh-3o-YLE" firstAttribute="leading" secondItem="g4F-Bv-xPp" secondAttribute="leading" constant="100" id="F5y-GG-VfE"/>
                             <constraint firstItem="ndh-3o-YLE" firstAttribute="centerX" secondItem="HSo-hP-6LH" secondAttribute="centerX" id="IFW-2W-M1A"/>
@@ -94,8 +101,10 @@
                             <constraint firstItem="syC-oF-Sem" firstAttribute="top" secondItem="ndh-3o-YLE" secondAttribute="bottom" constant="30" id="QEh-YN-wIz"/>
                             <constraint firstItem="02Z-iP-ce1" firstAttribute="top" secondItem="EoP-xE-g12" secondAttribute="bottom" constant="35" id="T0s-vE-LRT"/>
                             <constraint firstItem="ela-en-dif" firstAttribute="top" secondItem="syC-oF-Sem" secondAttribute="bottom" constant="8" id="eFc-XK-VrN"/>
+                            <constraint firstItem="itn-fj-V9U" firstAttribute="top" secondItem="g4F-Bv-xPp" secondAttribute="top" constant="16" id="fSO-jw-M8h"/>
+                            <constraint firstItem="EoP-xE-g12" firstAttribute="top" secondItem="itn-fj-V9U" secondAttribute="bottom" constant="60" id="i9T-Md-nfe"/>
                             <constraint firstItem="02Z-iP-ce1" firstAttribute="centerX" secondItem="HSo-hP-6LH" secondAttribute="centerX" id="kOh-9X-biM"/>
-                            <constraint firstItem="EoP-xE-g12" firstAttribute="top" secondItem="g4F-Bv-xPp" secondAttribute="top" constant="100" id="u3Z-PJ-rnx"/>
+                            <constraint firstItem="g4F-Bv-xPp" firstAttribute="trailing" secondItem="itn-fj-V9U" secondAttribute="trailing" constant="4" id="nmp-GX-Fjn"/>
                             <constraint firstItem="ndh-3o-YLE" firstAttribute="top" secondItem="02Z-iP-ce1" secondAttribute="bottom" constant="35" id="xsU-eB-Usx"/>
                         </constraints>
                     </view>
@@ -104,6 +113,7 @@
                         <outlet property="firstPomodoroIndicator" destination="mmj-7a-BYY" id="iJY-nb-ji4"/>
                         <outlet property="fourthPomodoroIndicator" destination="SnA-rv-1cy" id="eUU-DX-sjq"/>
                         <outlet property="progressBar" destination="EoP-xE-g12" id="vxV-aR-mdr"/>
+                        <outlet property="sayingLabel" destination="itn-fj-V9U" id="7yy-Is-N4i"/>
                         <outlet property="secondPomodoroIndicator" destination="idp-hc-2D6" id="l71-Wt-560"/>
                         <outlet property="startButton" destination="ndh-3o-YLE" id="Nvr-Pz-lyb"/>
                         <outlet property="thirdPomodoroIndicator" destination="lpg-1M-drA" id="jws-a1-xyS"/>

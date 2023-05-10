@@ -5,6 +5,7 @@ class ActivityViewController: UIViewController {
     @IBOutlet weak var progressBar: CircularProgressBar!
     @IBOutlet weak var timeLeftLabel: UILabel!
     @IBOutlet weak var startButton: UIButton!
+    @IBOutlet weak var sayingLabel: UILabel!
     
     @IBOutlet weak var firstPomodoroIndicator: UIImageView!
     @IBOutlet weak var secondPomodoroIndicator: UIImageView!
@@ -21,6 +22,69 @@ class ActivityViewController: UIViewController {
     private var remainingTime: TimeInterval = 30
     private let breakTime: TimeInterval = 10
     private let longBreakTime: TimeInterval = 10
+    
+    private let sessionStatements: [String] = [
+        "🚀 Let's work!",
+        "💪 Hustle time!",
+        "🎯 Focus on goals!",
+        "🔥 Ignite passion!",
+        "🌟 You've got this!",
+        "🏆 Keep winning!",
+        "💼 Game face on!",
+        "📈 Exceed expectations!",
+        "👩‍💻 Create magic!",
+        "🧠 Use our brains!",
+        "💥 Make an impact!",
+        "🔍 Pay attention!",
+        "🙌 Embrace challenges!",
+        "🎬 Take action!",
+        "🎨 Creativity is key!",
+        "🚧 Keep building!",
+        "💪 Persevere through!"
+    ]
+    
+    private let breakStatements: [String] = [
+        "☕️ Time for a break!",
+        "😌 Relax a bit!",
+        "🏖️ Take it easy!",
+        "🧘‍♀️ Clear your mind!",
+        "🌴 Rest and recharge!",
+        "👣 Take a walk!",
+        "🌞 Get some fresh air!",
+        "🎶 Listen to some music!",
+        "📖 Read a book!",
+        "💤 Take a power nap!",
+        "🧁 Treat yourself!",
+        "🤗 Connect with a friend!",
+    ]
+
+    private let pauseStatements: [String] = [
+        "⏸️ Paused!",
+        "🛑 Take a moment!",
+        "⏹️ Hold on!",
+        "🕰️ Time out!"
+    ]
+    
+    private let launchStatements: [String] = [
+        "👋 Welcome!",
+        "🚀 Get ready!",
+        "💻 Ready to work!",
+        "👨‍💻 Let's do this!",
+        "🧑‍🤝‍🧑 Let's collaborate!",
+        "📊 Track your progress!",
+        "🎯 Aim for success!",
+        "🔥 Unleash your potential!",
+        "🚀 Pomodoro Boost",
+        "🎯 Aim high!",
+        "🔥 Ignite your fire!",
+        "🚀 Boost your productivity!",
+        "💪 Power up your work!",
+        "🧠 Train your brain!",
+        "📈 Reach new heights!",
+        "🎉 Celebrate success!",
+        "🎨 Unlock your creativity!",
+        "🤝 Connect and thrive!"
+    ]
     
     private var totalWorkTime: TimeInterval {
         get {
@@ -41,6 +105,7 @@ class ActivityViewController: UIViewController {
             progressBar.putAnimation(animationName: "astronautOperatingLaptop")
             setButton()
             updateTimeLabel()
+            updateSayingLabel(category: .launch)
         }
     }
     
@@ -69,6 +134,7 @@ class ActivityViewController: UIViewController {
         startButton.setTitle("Pause", for: .normal)
         isTimerRunning = true
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateCountdown), userInfo: nil, repeats: true)
+        updateSayingLabel(category: isOnBreak ? .break : .session)
     }
     
     private func pauseTimer() {
@@ -77,6 +143,7 @@ class ActivityViewController: UIViewController {
         isTimerRunning = false
         timer?.invalidate()
         timer = nil
+        updateSayingLabel(category: .pause)
     }
     
     @objc private func updateCountdown() {
@@ -110,8 +177,12 @@ class ActivityViewController: UIViewController {
         
         updateTimeLabel()
         startTimer()
+
+        completedSessions += 1 // Increment the completed sessions count
+        updateIndicators() // Update the indicators
     }
     
+
     private func resetTimer() {
         // Invalidate and set timer to nil before resetting the timer
         timer?.invalidate()
@@ -123,6 +194,11 @@ class ActivityViewController: UIViewController {
         startButton.setTitle("Pause", for: .normal)
         startTimer()
         isTimerRunning = false
+
+        if completedSessions == 4 {
+            updateIndicators() // Update the indicators
+            completedSessions = 0 // Reset the completed sessions count
+        }
     }
     
     private func updateTimeLabel() {
@@ -172,5 +248,26 @@ class ActivityViewController: UIViewController {
             indicator.backgroundColor = .clear
             indicator.layer.cornerRadius = 0
         }
+    }
+    
+    private enum StatementCategory {
+        case session, `break`, pause, launch
+    }
+
+    private func updateSayingLabel(category: StatementCategory) {
+        let statements: [String]
+        switch category {
+        case .session:
+            statements = sessionStatements
+        case .break:
+            statements = breakStatements
+        case .pause:
+            statements = pauseStatements
+        case .launch:
+            statements = launchStatements
+        }
+        
+        let randomIndex = Int.random(in: 0..<statements.count)
+        sayingLabel.text = statements[randomIndex]
     }
 }
