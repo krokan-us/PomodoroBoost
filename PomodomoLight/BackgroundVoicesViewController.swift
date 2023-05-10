@@ -79,9 +79,11 @@ class BackgroundVoicesViewController: UIViewController, UICollectionViewDelegate
         return cell
     }
 
-
-    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        // Determine if the selected item is currently playing
+        let selectedItemIsPlaying = audioPlayers[indexPath.row].isPlaying
+        
         // Stop the currently playing sound
         for player in audioPlayers {
             if player.isPlaying {
@@ -89,21 +91,20 @@ class BackgroundVoicesViewController: UIViewController, UICollectionViewDelegate
             }
         }
 
-        // Play the selected sound
-        if indexPath.row < audioPlayers.count {
+        // Play the selected sound if it wasn't already playing
+        if !selectedItemIsPlaying {
             let player = audioPlayers[indexPath.row]
             player.currentTime = 0 // Restart from the beginning
             player.play()
         }
 
-        // Make other buttons transparent
+        // Update button transparency based on the playing state
         for visibleCellIndexPath in collectionView.indexPathsForVisibleItems {
-            if visibleCellIndexPath != indexPath {
-                let cell = collectionView.cellForItem(at: visibleCellIndexPath) as! BackgroundNoisesCollectionViewCell
-                cell.alpha = 0.5
-            } else {
-                let cell = collectionView.cellForItem(at: indexPath) as! BackgroundNoisesCollectionViewCell
+            let cell = collectionView.cellForItem(at: visibleCellIndexPath) as! BackgroundNoisesCollectionViewCell
+            if selectedItemIsPlaying { // If a sound was playing before tapping, all buttons should be fully visible
                 cell.alpha = 1.0
+            } else { // If no sound was playing before tapping, the playing button should be fully visible, while others are half visible
+                cell.alpha = visibleCellIndexPath == indexPath ? 1.0 : 0.5
             }
         }
     }
