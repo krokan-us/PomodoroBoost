@@ -5,10 +5,10 @@ class BackgroundVoicesViewController: UIViewController, UICollectionViewDelegate
     
     @IBOutlet weak var backgroundVoicesCollectionView: UICollectionView!
     
-    let noises = ["Bloom", "By The Seaside", "Chimes", "Crickets", "Droplets", "Night Owl", "Rain", "Stream"]
-    let systemSoundIDs = [1116, 1117, 1118, 1119, 1120, 1121, 1122, 1123]
+    let noises = ["Rain", "Forest", "Campfire", "River", "Wind", "Night", "Droplets", "Chimes"]
+    let soundFiles = ["rain.mp3", "forest.mp3", "campfire.mp3", "river.mp3", "wind.mp3", "night.mp3", "droplets.mp3", "chimes.mp3"]
     
-    var audioPlayer: AVAudioPlayer?
+    var audioPlayers: [AVAudioPlayer] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +20,19 @@ class BackgroundVoicesViewController: UIViewController, UICollectionViewDelegate
         // Set collection view delegate and data source
         backgroundVoicesCollectionView.delegate = self
         backgroundVoicesCollectionView.dataSource = self
+        
+        // Load audio players
+        for file in soundFiles {
+            if let url = Bundle.main.url(forResource: file, withExtension: nil) {
+                do {
+                    let player = try AVAudioPlayer(contentsOf: url)
+                    player.numberOfLoops = -1 // Play infinitely
+                    audioPlayers.append(player)
+                } catch {
+                    print("Error loading audio player for file \(file): \(error.localizedDescription)")
+                }
+            }
+        }
     }
     
     // MARK: - Collection View Delegate
@@ -69,8 +82,30 @@ class BackgroundVoicesViewController: UIViewController, UICollectionViewDelegate
 
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        // Play the system sound when the user taps on the cell
-        AudioServicesPlaySystemSound(SystemSoundID(systemSoundIDs[indexPath.row]))
+        // Stop the currently playing sound
+        for player in audioPlayers {
+            if player.isPlaying {
+                player.stop()
+            }
+        }
+
+        // Play the selected sound
+        if indexPath.row < audioPlayers.count {
+            let player = audioPlayers[indexPath.row]
+            player.currentTime = 0 // Restart from the beginning
+            player.play()
+        }
+
+        // Make other buttons transparent
+        for visibleCellIndexPath in collectionView.indexPathsForVisibleItems {
+            if visibleCellIndexPath != indexPath {
+                let cell = collectionView.cellForItem(at: visibleCellIndexPath) as! BackgroundNoisesCollectionViewCell
+                cell.alpha = 0.5
+            } else {
+                let cell = collectionView.cellForItem(at: indexPath) as! BackgroundNoisesCollectionViewCell
+                cell.alpha = 1.0
+            }
+        }
     }
 }
 

@@ -21,6 +21,15 @@
 		16FD00582A0B7DF500CB3F39 /* BackgroundVoicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FD00572A0B7DF500CB3F39 /* BackgroundVoicesViewController.swift */; };
 		16FD00602A0B851800CB3F39 /* BackgroundNoisesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FD005E2A0B851800CB3F39 /* BackgroundNoisesCollectionViewCell.swift */; };
 		16FD00612A0B851800CB3F39 /* BackgroundNoisesCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16FD005F2A0B851800CB3F39 /* BackgroundNoisesCollectionViewCell.xib */; };
+		16FD00652A0B977700CB3F39 /* rain.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 16FD00642A0B977700CB3F39 /* rain.mp3 */; };
+		16FD00672A0B97BE00CB3F39 /* forest.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 16FD00662A0B97BD00CB3F39 /* forest.mp3 */; };
+		16FD00692A0B97E900CB3F39 /* campfire.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 16FD00682A0B97E900CB3F39 /* campfire.mp3 */; };
+		16FD006B2A0B980400CB3F39 /* river.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 16FD006A2A0B980400CB3F39 /* river.mp3 */; };
+		16FD006D2A0B982700CB3F39 /* wind.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 16FD006C2A0B982700CB3F39 /* wind.mp3 */; };
+		16FD006F2A0B988300CB3F39 /* night.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 16FD006E2A0B988300CB3F39 /* night.mp3 */; };
+		16FD00712A0B98C000CB3F39 /* droplets.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 16FD00702A0B98C000CB3F39 /* droplets.mp3 */; };
+		16FD00732A0B98F800CB3F39 /* chimes.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 16FD00722A0B98F800CB3F39 /* chimes.mp3 */; };
+		16FD00752A0BB76400CB3F39 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FD00742A0BB76400CB3F39 /* SettingsViewController.swift */; };
 		49C94174847431968D6B0DCC /* Pods_PomodomoLightTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FC2E547F594D5CE89BC4222 /* Pods_PomodomoLightTests.framework */; };
 		D5FFE220C115ED3758251410 /* Pods_PomodomoLight_PomodomoLightUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59B90C3172103C56E9691C38 /* Pods_PomodomoLight_PomodomoLightUITests.framework */; };
 		DC51786F1620395C39EDBE28 /* Pods_PomodomoLight.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40A0B00835A0C98916FFCCFC /* Pods_PomodomoLight.framework */; };
@@ -62,6 +71,15 @@
 		16FD00572A0B7DF500CB3F39 /* BackgroundVoicesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundVoicesViewController.swift; sourceTree = "<group>"; };
 		16FD005E2A0B851800CB3F39 /* BackgroundNoisesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundNoisesCollectionViewCell.swift; sourceTree = "<group>"; };
 		16FD005F2A0B851800CB3F39 /* BackgroundNoisesCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BackgroundNoisesCollectionViewCell.xib; sourceTree = "<group>"; };
+		16FD00642A0B977700CB3F39 /* rain.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = rain.mp3; sourceTree = "<group>"; };
+		16FD00662A0B97BD00CB3F39 /* forest.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = forest.mp3; sourceTree = "<group>"; };
+		16FD00682A0B97E900CB3F39 /* campfire.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = campfire.mp3; sourceTree = "<group>"; };
+		16FD006A2A0B980400CB3F39 /* river.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = river.mp3; sourceTree = "<group>"; };
+		16FD006C2A0B982700CB3F39 /* wind.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = wind.mp3; sourceTree = "<group>"; };
+		16FD006E2A0B988300CB3F39 /* night.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = night.mp3; sourceTree = "<group>"; };
+		16FD00702A0B98C000CB3F39 /* droplets.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = droplets.mp3; sourceTree = "<group>"; };
+		16FD00722A0B98F800CB3F39 /* chimes.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = chimes.mp3; sourceTree = "<group>"; };
+		16FD00742A0BB76400CB3F39 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		2A04D3A31A83F9A4071B9004 /* Pods-PomodomoLight.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PomodomoLight.release.xcconfig"; path = "Target Support Files/Pods-PomodomoLight/Pods-PomodomoLight.release.xcconfig"; sourceTree = "<group>"; };
 		2FC2E547F594D5CE89BC4222 /* Pods_PomodomoLightTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PomodomoLightTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		40A0B00835A0C98916FFCCFC /* Pods_PomodomoLight.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PomodomoLight.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -126,8 +144,10 @@
 		16AAA7142A091D1A00AE8E3E /* PomodomoLight */ = {
 			isa = PBXGroup;
 			children = (
+				16FD00632A0B976800CB3F39 /* Sounds */,
 				16FD00592A0B7E1400CB3F39 /* Collection View Cells */,
 				16AAA7152A091D1A00AE8E3E /* AppDelegate.swift */,
+				16FD00742A0BB76400CB3F39 /* SettingsViewController.swift */,
 				16AAA7172A091D1A00AE8E3E /* SceneDelegate.swift */,
 				16AAA7192A091D1A00AE8E3E /* ActivityViewController.swift */,
 				16FD00572A0B7DF500CB3F39 /* BackgroundVoicesViewController.swift */,
@@ -165,6 +185,21 @@
 				16FD005F2A0B851800CB3F39 /* BackgroundNoisesCollectionViewCell.xib */,
 			);
 			path = "Collection View Cells";
+			sourceTree = "<group>";
+		};
+		16FD00632A0B976800CB3F39 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				16FD00642A0B977700CB3F39 /* rain.mp3 */,
+				16FD00662A0B97BD00CB3F39 /* forest.mp3 */,
+				16FD00682A0B97E900CB3F39 /* campfire.mp3 */,
+				16FD006A2A0B980400CB3F39 /* river.mp3 */,
+				16FD006C2A0B982700CB3F39 /* wind.mp3 */,
+				16FD006E2A0B988300CB3F39 /* night.mp3 */,
+				16FD00702A0B98C000CB3F39 /* droplets.mp3 */,
+				16FD00722A0B98F800CB3F39 /* chimes.mp3 */,
+			);
+			path = Sounds;
 			sourceTree = "<group>";
 		};
 		19A86B5A122660A6C687B7EC /* Pods */ = {
@@ -300,9 +335,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				16AAA7222A091D1B00AE8E3E /* LaunchScreen.storyboard in Resources */,
+				16FD00712A0B98C000CB3F39 /* droplets.mp3 in Resources */,
+				16FD00672A0B97BE00CB3F39 /* forest.mp3 in Resources */,
+				16FD006D2A0B982700CB3F39 /* wind.mp3 in Resources */,
+				16FD006F2A0B988300CB3F39 /* night.mp3 in Resources */,
+				16FD00732A0B98F800CB3F39 /* chimes.mp3 in Resources */,
+				16FD00652A0B977700CB3F39 /* rain.mp3 in Resources */,
 				16AAA71F2A091D1B00AE8E3E /* Assets.xcassets in Resources */,
 				16AAA71D2A091D1A00AE8E3E /* Main.storyboard in Resources */,
 				16FD00612A0B851800CB3F39 /* BackgroundNoisesCollectionViewCell.xib in Resources */,
+				16FD00692A0B97E900CB3F39 /* campfire.mp3 in Resources */,
+				16FD006B2A0B980400CB3F39 /* river.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -437,6 +480,7 @@
 				16AAA7462A09208A00AE8E3E /* CircularProgressBar.swift in Sources */,
 				16FD00602A0B851800CB3F39 /* BackgroundNoisesCollectionViewCell.swift in Sources */,
 				16FD00582A0B7DF500CB3F39 /* BackgroundVoicesViewController.swift in Sources */,
+				16FD00752A0BB76400CB3F39 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
