@@ -40,7 +40,7 @@ class CircularProgressBar: UIView {
                                       clockwise: true)
         
         circleLayer.path = circlePath.cgPath
-        circleLayer.fillColor = UIColor.clear.cgColor
+        circleLayer.fillColor = UIColor.white.cgColor
         circleLayer.strokeColor = UIColor.lightGray.cgColor
         circleLayer.lineWidth = 15.0
         circleLayer.strokeEnd = 1.0
