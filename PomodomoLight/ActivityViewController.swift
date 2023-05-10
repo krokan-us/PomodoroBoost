@@ -130,12 +130,14 @@ class ActivityViewController: UIViewController {
         timer = nil
 
         progressBar.putAnimation(animationName: isOnBreak ? "astronautInMug" : "astronautOnARocket")
-        
+        progressBar.barColor = isOnBreak ? .green : .red // update the bar color
+
         startButton.setTitle("Pause", for: .normal)
         isTimerRunning = true
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateCountdown), userInfo: nil, repeats: true)
         updateSayingLabel(category: isOnBreak ? .break : .session)
     }
+
     
     private func pauseTimer() {
         startButton.setTitle("Continue", for: .normal)
@@ -170,6 +172,7 @@ class ActivityViewController: UIViewController {
         timer = nil
 
         isOnBreak = true
+        progressBar.barColor = .green
         progressBar.putAnimation(animationName: "astronautInMug")
         
         // Check if 4 sessions are completed and set break duration accordingly
