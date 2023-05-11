@@ -7,6 +7,7 @@ target 'PomodomoLight' do
 
   # Pods for PomodomoLight
   pod 'lottie-ios'
+  pod 'Charts'
 
   target 'PomodomoLightTests' do
     inherit! :search_paths

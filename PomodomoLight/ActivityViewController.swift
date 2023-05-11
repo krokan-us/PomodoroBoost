@@ -183,6 +183,8 @@ class ActivityViewController: UIViewController {
 
         completedSessions += 1 // Increment the completed sessions count
         updateIndicators() // Update the indicators
+        
+        SessionManager.shared.saveSession(duration: Int(sessionTime))
     }
     
 
