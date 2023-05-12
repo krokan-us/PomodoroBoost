@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		160CF0012A0D4C8D00657803 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160CF0002A0D4C8D00657803 /* SessionManager.swift */; };
 		160CF0042A0D4CC500657803 /* Session.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 160CF0022A0D4CC500657803 /* Session.xcdatamodeld */; };
+		160CF0062A0E564300657803 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160CF0052A0E564300657803 /* TabBarViewController.swift */; };
 		16AAA7162A091D1A00AE8E3E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16AAA7152A091D1A00AE8E3E /* AppDelegate.swift */; };
 		16AAA7182A091D1A00AE8E3E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16AAA7172A091D1A00AE8E3E /* SceneDelegate.swift */; };
 		16AAA71A2A091D1A00AE8E3E /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16AAA7192A091D1A00AE8E3E /* ActivityViewController.swift */; };
@@ -57,6 +58,7 @@
 /* Begin PBXFileReference section */
 		160CF0002A0D4C8D00657803 /* SessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
 		160CF0032A0D4CC500657803 /* Session.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Session.xcdatamodel; sourceTree = "<group>"; };
+		160CF0052A0E564300657803 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		16AAA7122A091D1A00AE8E3E /* PomodomoLight.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PomodomoLight.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		16AAA7152A091D1A00AE8E3E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		16AAA7172A091D1A00AE8E3E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 				16FD00552A0A1F3300CB3F39 /* HistoryViewController.swift */,
 				16AAA7452A09208A00AE8E3E /* CircularProgressBar.swift */,
 				160CF0002A0D4C8D00657803 /* SessionManager.swift */,
+				160CF0052A0E564300657803 /* TabBarViewController.swift */,
 				16AAA71B2A091D1A00AE8E3E /* Main.storyboard */,
 				16AAA71E2A091D1B00AE8E3E /* Assets.xcassets */,
 				16AAA7202A091D1B00AE8E3E /* LaunchScreen.storyboard */,
@@ -481,6 +484,7 @@
 			files = (
 				16AAA71A2A091D1A00AE8E3E /* ActivityViewController.swift in Sources */,
 				16AAA7162A091D1A00AE8E3E /* AppDelegate.swift in Sources */,
+				160CF0062A0E564300657803 /* TabBarViewController.swift in Sources */,
 				160CF0012A0D4C8D00657803 /* SessionManager.swift in Sources */,
 				16AAA7182A091D1A00AE8E3E /* SceneDelegate.swift in Sources */,
 				160CF0042A0D4CC500657803 /* Session.xcdatamodeld in Sources */,

@@ -185,6 +185,7 @@ class ActivityViewController: UIViewController {
         updateIndicators() // Update the indicators
         
         SessionManager.shared.saveSession(duration: Int(sessionTime))
+        NotificationCenter.default.post(name: .sessionCompleted, object: nil)
     }
     
 
@@ -275,4 +276,8 @@ class ActivityViewController: UIViewController {
         let randomIndex = Int.random(in: 0..<statements.count)
         sayingLabel.text = statements[randomIndex]
     }
+}
+
+extension Notification.Name {
+    static let sessionCompleted = Notification.Name("sessionCompleted")
 }

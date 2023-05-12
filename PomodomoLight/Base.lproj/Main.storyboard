@@ -339,29 +339,49 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JK8-Ec-T5o" customClass="BarChartView" customModule="Charts">
-                                <rect key="frame" x="16" y="137.33333333333334" width="361" height="481.66666666666663"/>
+                                <rect key="frame" x="16" y="171.33333333333334" width="361" height="447.66666666666663"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="Tdj-5N-CzR">
-                                <rect key="frame" x="256.33333333333331" y="99" width="120.66666666666669" height="34.333333333333343"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="yZo-cZ-OzO">
+                                <rect key="frame" x="180.66666666666663" y="99" width="196.33333333333337" height="64.333333333333314"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fTm-r0-U8U">
-                                        <rect key="frame" x="0.0" y="0.0" width="39.666666666666664" height="34.333333333333336"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="Tdj-5N-CzR">
+                                        <rect key="frame" x="0.0" y="0.0" width="196.33333333333334" height="34.333333333333336"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fTm-r0-U8U">
+                                                <rect key="frame" x="0.0" y="0.0" width="64.333333333333329" height="34.333333333333336"/>
+                                                <color key="tintColor" systemColor="labelColor"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" image="chevron.left" catalog="system"/>
+                                                <connections>
+                                                    <action selector="previousWeekButtonTapped:" destination="wIF-ID-NjG" eventType="touchUpInside" id="yKn-3l-u7A"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.75" translatesAutoresizingMaskIntoConstraints="NO" id="n3s-nU-Cu3">
+                                                <rect key="frame" x="64.333333333333343" y="0.0" width="67.333333333333343" height="34.333333333333336"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bCH-mU-gT9">
+                                                <rect key="frame" x="131.66666666666666" y="0.0" width="64.666666666666657" height="34.333333333333336"/>
+                                                <color key="tintColor" systemColor="labelColor"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" image="chevron.right" catalog="system"/>
+                                                <connections>
+                                                    <action selector="nextWeekButtonTapped:" destination="wIF-ID-NjG" eventType="touchUpInside" id="wyX-ac-U34"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4u8-nz-bvD">
+                                        <rect key="frame" x="0.0" y="34.333333333333343" width="196.33333333333334" height="30"/>
                                         <color key="tintColor" systemColor="labelColor"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" image="chevron.left" catalog="system"/>
-                                    </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n3s-nU-Cu3">
-                                        <rect key="frame" x="39.666666666666686" y="0.0" width="41.333333333333343" height="34.333333333333336"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bCH-mU-gT9">
-                                        <rect key="frame" x="81" y="0.0" width="39.666666666666657" height="34.333333333333336"/>
-                                        <color key="tintColor" systemColor="labelColor"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" image="chevron.right" catalog="system"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="Show this week"/>
+                                        <connections>
+                                            <action selector="thisWeekButtonTapped:" destination="wIF-ID-NjG" eventType="touchUpInside" id="PQ5-u6-WCO"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -369,11 +389,12 @@
                         <viewLayoutGuide key="safeArea" id="D47-zn-CeE"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="D47-zn-CeE" firstAttribute="trailing" secondItem="Tdj-5N-CzR" secondAttribute="trailing" constant="16" id="211-Te-Bez"/>
                             <constraint firstItem="D47-zn-CeE" firstAttribute="trailing" secondItem="JK8-Ec-T5o" secondAttribute="trailing" constant="16" id="Bhz-Za-JFw"/>
-                            <constraint firstItem="Tdj-5N-CzR" firstAttribute="top" secondItem="D47-zn-CeE" secondAttribute="top" constant="40" id="c5s-S9-xb1"/>
+                            <constraint firstItem="yZo-cZ-OzO" firstAttribute="top" secondItem="D47-zn-CeE" secondAttribute="top" constant="40" id="SqU-EY-gZK"/>
+                            <constraint firstItem="yZo-cZ-OzO" firstAttribute="width" secondItem="c7Z-HA-JMe" secondAttribute="width" multiplier="0.5" id="ebh-7B-Wit"/>
                             <constraint firstItem="JK8-Ec-T5o" firstAttribute="leading" secondItem="D47-zn-CeE" secondAttribute="leading" constant="16" id="f4o-rF-h2e"/>
-                            <constraint firstItem="JK8-Ec-T5o" firstAttribute="top" secondItem="Tdj-5N-CzR" secondAttribute="bottom" constant="4" id="tQe-j0-aYn"/>
+                            <constraint firstItem="JK8-Ec-T5o" firstAttribute="top" secondItem="yZo-cZ-OzO" secondAttribute="bottom" constant="8" id="pPv-x7-Z8b"/>
+                            <constraint firstItem="D47-zn-CeE" firstAttribute="trailing" secondItem="yZo-cZ-OzO" secondAttribute="trailing" constant="16" id="qpG-B3-lbG"/>
                             <constraint firstItem="D47-zn-CeE" firstAttribute="bottom" secondItem="JK8-Ec-T5o" secondAttribute="bottom" constant="150" id="zeR-9W-M57"/>
                         </constraints>
                     </view>
@@ -382,12 +403,13 @@
                         <outlet property="nextWeekButton" destination="bCH-mU-gT9" id="ChE-vx-Chx"/>
                         <outlet property="previousWeekButton" destination="fTm-r0-U8U" id="GHN-jT-Zku"/>
                         <outlet property="sessionHistoryChart" destination="JK8-Ec-T5o" id="vsm-ae-yRW"/>
+                        <outlet property="thisWeekButton" destination="4u8-nz-bvD" id="gtb-9T-I8v"/>
                         <outlet property="weekLabel" destination="n3s-nU-Cu3" id="wRz-rv-qxi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p3P-vE-99g" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="983.96946564885491" y="-298.59154929577466"/>
+            <point key="canvasLocation" x="983.96946564885491" y="-334.50704225352115"/>
         </scene>
         <!--Background Voices View Controller-->
         <scene sceneID="yK0-G9-MNW">
@@ -425,12 +447,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JMf-eM-f8l" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="983.96946564885491" y="442.95774647887328"/>
+            <point key="canvasLocation" x="984" y="626"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Tab Bar View Controller-->
         <scene sceneID="98I-ct-bZc">
             <objects>
-                <tabBarController id="1qU-sA-daD" sceneMemberID="viewController">
+                <tabBarController id="1qU-sA-daD" customClass="TabBarViewController" customModule="PomodomoLight" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Uw5-bX-5Zu">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -438,7 +460,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="DBx-pH-H3Q" kind="relationship" relationship="viewControllers" id="Blk-pE-GIz"/>
-                        <segue destination="cYG-hZ-r6X" kind="relationship" relationship="viewControllers" id="c1I-BF-Sb3"/>
+                        <segue destination="cYG-hZ-r6X" kind="relationship" relationship="viewControllers" id="6h4-oU-V7y"/>
                         <segue destination="wIF-ID-NjG" kind="relationship" relationship="viewControllers" id="xGg-Zc-WdG"/>
                         <segue destination="obw-Dk-JQT" kind="relationship" relationship="viewControllers" id="4Eu-Cq-93r"/>
                     </connections>

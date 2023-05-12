@@ -30,8 +30,9 @@ class SettingsViewController: UIViewController {
         super.viewDidLoad()
         updateLabels()
     }
+    
+
     override func viewWillAppear(_ animated: Bool) {
-        self.tabBarController?.selectedIndex = 1
         setButton()
         
         if !isAnimationPut{
