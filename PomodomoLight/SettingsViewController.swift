@@ -87,10 +87,16 @@ class SettingsViewController: UIViewController {
     }
     
     private func updateLabels() {
-        pomodoroDurationLabel.text = "\(Int(pomodoroSlider.value))m"
-        shortBreakDurationLabel.text = "\(Int(shortBreakSlider.value))m"
-        longBreakDurationLabel.text = "\(Int(longBreakSlider.value))m"
-        roundsLabel.text = "\(Int(roundsSlider.value))"
+        let defaults = UserDefaults.standard
+        let pomodoroDuration = Int(defaults.float(forKey: "pomodoroDuration"))
+        let shortBreakDuration = Int(defaults.float(forKey: "shortBreakDuration"))
+        let longBreakDuration = Int(defaults.float(forKey: "longBreakDuration"))
+        let rounds = Int(roundsSlider.value)
+        
+        pomodoroDurationLabel.text = "\(pomodoroDuration)m"
+        shortBreakDurationLabel.text = "\(shortBreakDuration)m"
+        longBreakDurationLabel.text = "\(longBreakDuration)m"
+        roundsLabel.text = "\(rounds)"
     }
     
     private func saveSliderValuesToUserDefaults() {
