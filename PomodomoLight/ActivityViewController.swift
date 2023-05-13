@@ -1,4 +1,12 @@
+//
+//  ActivityViewController.swift
+//  PomodomoLight
+//
+//  Created by Asım Altınışık on 8.05.2023.
+//
+
 import UIKit
+import AVFoundation
 
 class ActivityViewController: UIViewController {
     
@@ -17,11 +25,27 @@ class ActivityViewController: UIViewController {
     private var isOnBreak = false
     private var hasTimerStarted = false
     private var isTimerRunning = false
+    private var hasViewDisappeared: Bool = false
+    private var wasOnBreak = false
+    private let timerEndedSoundID: SystemSoundID = 1005
+
     
-    private let sessionTime: TimeInterval = 30
-    private var remainingTime: TimeInterval = 30
-    private let breakTime: TimeInterval = 10
-    private let longBreakTime: TimeInterval = 10
+    var timerState: TimerState = .notStarted
+    
+    enum TimerState {
+        case notStarted
+        case session
+        case shortBreak
+        case longBreak
+        case paused
+    }
+
+    private var sessionTime: TimeInterval = 10
+    private var breakTime: TimeInterval = 10
+    private var longBreakTime: TimeInterval = 20
+    
+    private var remainingSessionTime: TimeInterval = 10
+    private var remainingShortBreakTime: TimeInterval = 10
     
     private let sessionStatements: [String] = [
         "🚀 Let's work!",
@@ -57,7 +81,7 @@ class ActivityViewController: UIViewController {
         "🧁 Treat yourself!",
         "🤗 Connect with a friend!",
     ]
-
+    
     private let pauseStatements: [String] = [
         "⏸️ Paused!",
         "🛑 Take a moment!",
@@ -86,22 +110,15 @@ class ActivityViewController: UIViewController {
         "🤝 Connect and thrive!"
     ]
     
-    private var totalWorkTime: TimeInterval {
-        get {
-            return UserDefaults.standard.double(forKey: "totalWorkTime")
-        }
-        set {
-            UserDefaults.standard.set(newValue, forKey: "totalWorkTime")
-        }
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         if !hasTimerStarted {
-            progressBar.progress = 0
+            startButton.setTitle("Start", for: .normal)
             progressBar.putAnimation(animationName: "astronautOperatingLaptop")
             setButton()
             updateTimeLabel()
@@ -109,14 +126,28 @@ class ActivityViewController: UIViewController {
         }
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        hasViewDisappeared = true
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        hasViewDisappeared = false
+    }
+    
     @IBAction func startButtonTapped(_ sender: Any) {
-        hasTimerStarted = true
-        if isTimerRunning {
-            pauseTimer()
-        } else {
+        switch timerState {
+        case .notStarted:
             startTimer()
+            timerState = .session
+        case .session, .shortBreak, .longBreak:
+            pauseTimer()
+        case .paused:
+            continueTimer()
         }
     }
+
     
     private func setButton() {
         startButton.backgroundColor = .red
@@ -128,79 +159,103 @@ class ActivityViewController: UIViewController {
         // Invalidate and set timer to nil before starting a new timer
         timer?.invalidate()
         timer = nil
-
+        
         progressBar.putAnimation(animationName: isOnBreak ? "astronautInMug" : "astronautOnARocket")
         progressBar.barColor = isOnBreak ? .green : .red // update the bar color
-
+        
         startButton.setTitle("Pause", for: .normal)
-        isTimerRunning = true
+        timerState = isOnBreak ? .shortBreak : .session
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateCountdown), userInfo: nil, repeats: true)
         updateSayingLabel(category: isOnBreak ? .break : .session)
     }
-
+    
     
     private func pauseTimer() {
         startButton.setTitle("Continue", for: .normal)
         progressBar.putAnimation(animationName: "astronautHoldingAStar")
-        isTimerRunning = false
+        timerState = .paused
         timer?.invalidate()
         timer = nil
+        wasOnBreak = isOnBreak // Remember whether we were on break or not
         updateSayingLabel(category: .pause)
     }
     
+    private func continueTimer() {
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateCountdown), userInfo: nil, repeats: true)
+        startButton.setTitle("Pause", for: .normal)
+        progressBar.putAnimation(animationName: wasOnBreak ? "astronautInMug" : "astronautOnARocket")
+        timerState = wasOnBreak ? .shortBreak : .session // Restore the state we had before pausing
+        updateSayingLabel(category: wasOnBreak ? .break : .session)
+    }
+    
+    private func updateTime(_ time: inout TimeInterval) {
+        time -= 1
+    }
+    
     @objc private func updateCountdown() {
-        remainingTime -= 1
+        if isOnBreak {
+            updateTime(&remainingShortBreakTime)
+        } else {
+            updateTime(&remainingSessionTime)
+        }
+        
         updateTimeLabel()
         
-        let progress = CGFloat(1 - remainingTime / (isOnBreak ? breakTime : sessionTime))
+        let progress = CGFloat(1 - (isOnBreak ? remainingShortBreakTime : remainingSessionTime) / (isOnBreak ? breakTime : sessionTime))
         progressBar.progress = progress
         
-        if remainingTime <= 0 {
-            timer?.invalidate()
-            if isOnBreak {
+        if isOnBreak {
+            if remainingShortBreakTime <= 0 {
+                timer?.invalidate()
                 resetTimer()
-            } else {
+                AudioServicesPlaySystemSound(timerEndedSoundID)
+            }
+        } else {
+            if remainingSessionTime <= 0 {
+                timer?.invalidate()
                 startBreak()
+                AudioServicesPlaySystemSound(timerEndedSoundID)
             }
         }
     }
     
-
+    
     private func startBreak() {
         // Invalidate and set timer to nil before starting a break
         timer?.invalidate()
         timer = nil
-
+        
         isOnBreak = true
         progressBar.barColor = .green
         progressBar.putAnimation(animationName: "astronautInMug")
         
         // Check if 4 sessions are completed and set break duration accordingly
-        remainingTime = completedSessions == 4 ? longBreakTime : breakTime
+        remainingShortBreakTime = completedSessions == 4 ? longBreakTime : breakTime
         
         updateTimeLabel()
         startTimer()
-
+        
         completedSessions += 1 // Increment the completed sessions count
         updateIndicators() // Update the indicators
         
         SessionManager.shared.saveSession(duration: Int(sessionTime))
+        
         NotificationCenter.default.post(name: .sessionCompleted, object: nil)
     }
     
-
+    
     private func resetTimer() {
         // Invalidate and set timer to nil before resetting the timer
         timer?.invalidate()
         timer = nil
-
+        
         isOnBreak = false
-        remainingTime = sessionTime
+        remainingSessionTime = sessionTime
         updateTimeLabel()
         startButton.setTitle("Pause", for: .normal)
         startTimer()
         isTimerRunning = false
-
+        
         if completedSessions == 4 {
             updateIndicators() // Update the indicators
             completedSessions = 0 // Reset the completed sessions count
@@ -208,8 +263,8 @@ class ActivityViewController: UIViewController {
     }
     
     private func updateTimeLabel() {
-        let minutes = Int(remainingTime) / 60
-        let seconds = Int(remainingTime) % 60
+        let minutes = Int(isOnBreak ? remainingShortBreakTime : remainingSessionTime) / 60
+        let seconds = Int(isOnBreak ? remainingShortBreakTime : remainingSessionTime) % 60
         timeLeftLabel.text = String(format: "%02d:%02d", minutes, seconds)
     }
     
@@ -259,7 +314,7 @@ class ActivityViewController: UIViewController {
     private enum StatementCategory {
         case session, `break`, pause, launch
     }
-
+    
     private func updateSayingLabel(category: StatementCategory) {
         let statements: [String]
         switch category {
@@ -281,3 +336,4 @@ class ActivityViewController: UIViewController {
 extension Notification.Name {
     static let sessionCompleted = Notification.Name("sessionCompleted")
 }
+
