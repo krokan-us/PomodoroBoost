@@ -24,8 +24,10 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var longBreakDurationLabel: UILabel!
     @IBOutlet weak var roundsLabel: UILabel!
     
+    @IBOutlet weak var notificationsSwitch: UISwitch!
     @IBOutlet weak var restoreToDefaultsButton: UIButton!
-   
+    @IBOutlet weak var soundOnCompletionSwitch: UISwitch!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         updateLabels()
@@ -66,6 +68,12 @@ class SettingsViewController: UIViewController {
         saveSliderValuesToUserDefaults()
     }
     
+    @IBAction func notificationsSwitchValueChanged(_ sender: Any) {
+    }
+    
+    @IBAction func soundOnCompletionValueChanged(_ sender: Any) {
+    }
+    
     @IBAction func restoreButtonTapped(_ sender: Any) {
         let defaults = UserDefaults.standard
         defaults.set(25, forKey: "pomodoroDuration")
@@ -84,6 +92,9 @@ class SettingsViewController: UIViewController {
         restoreToDefaultsButton.backgroundColor = .red
         restoreToDefaultsButton.layer.cornerRadius = 20
         restoreToDefaultsButton.tintColor = .white
+        
+        notificationsSwitch.onTintColor = UIColor.red
+        soundOnCompletionSwitch.onTintColor = UIColor.red
     }
     
     private func updateLabels() {
