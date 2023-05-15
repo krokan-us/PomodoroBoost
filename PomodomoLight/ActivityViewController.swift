@@ -40,11 +40,11 @@ class ActivityViewController: UIViewController {
         case paused
     }
 
-    private var sessionTime: TimeInterval = 10
+    private var sessionTime: TimeInterval = 10 * 60
     private var breakTime: TimeInterval = 10
     private var longBreakTime: TimeInterval = 20
     
-    private var remainingSessionTime: TimeInterval = 10
+    private var remainingSessionTime: TimeInterval = 10 * 60
     private var remainingShortBreakTime: TimeInterval = 10
     
     private let sessionStatements: [String] = [
@@ -157,8 +157,15 @@ class ActivityViewController: UIViewController {
     
     private func startTimer() {
         // Invalidate and set timer to nil before starting a new timer
+        hasTimerStarted = true
         timer?.invalidate()
         timer = nil
+        
+        if isOnBreak {
+            SessionManager.shared.updateBreaksStarted(count: 1)
+        } else {
+            SessionManager.shared.updatePomodorosStarted(count: 1)
+        }
         
         progressBar.putAnimation(animationName: isOnBreak ? "astronautInMug" : "astronautOnARocket")
         progressBar.barColor = isOnBreak ? .green : .red // update the bar color
@@ -209,12 +216,18 @@ class ActivityViewController: UIViewController {
                 timer?.invalidate()
                 resetTimer()
                 AudioServicesPlaySystemSound(timerEndedSoundID)
+                SessionManager.shared.updateBreaksCompleted(count: 1)
+                SessionManager.shared.updateBreaksMinutes(duration: breakTime)
+                NotificationCenter.default.post(name: .breakCompleted, object: nil)
             }
         } else {
             if remainingSessionTime <= 0 {
                 timer?.invalidate()
                 startBreak()
                 AudioServicesPlaySystemSound(timerEndedSoundID)
+                SessionManager.shared.updatePomodorosCompleted(count: 1)
+                SessionManager.shared.updatePomodorosMinutes(duration: sessionTime)
+                NotificationCenter.default.post(name: .sessionCompleted, object: nil)
             }
         }
     }
@@ -239,8 +252,6 @@ class ActivityViewController: UIViewController {
         updateIndicators() // Update the indicators
         
         SessionManager.shared.saveSession(duration: Int(sessionTime))
-        
-        NotificationCenter.default.post(name: .sessionCompleted, object: nil)
     }
     
     
@@ -335,5 +346,6 @@ class ActivityViewController: UIViewController {
 
 extension Notification.Name {
     static let sessionCompleted = Notification.Name("sessionCompleted")
+    static let breakCompleted = Notification.Name("breakCompleted")
 }
 
