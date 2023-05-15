@@ -15,11 +15,19 @@ class HistoryViewController: UIViewController {
     @IBOutlet weak var weekLabel: UILabel!
     @IBOutlet weak var thisWeekButton: UIButton!
     @IBOutlet weak var sessionHistoryChart: BarChartView!
+    @IBOutlet weak var informationTable: UITableView!
     var currentWeek = Date()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(refreshHistoryChart), name: .sessionCompleted, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(refreshTable), name: .sessionCompleted, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(refreshTable), name: .breakCompleted, object: nil)
+        
+        // Register the collection view cell class
+        let nib = UINib(nibName: "InformationTableViewCell", bundle: nil)
+        informationTable.register(nib, forCellReuseIdentifier: "informationCell")
+        informationTable.dataSource = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -33,6 +41,10 @@ class HistoryViewController: UIViewController {
     
     @objc func refreshHistoryChart() {
         updateChart()
+    }
+    
+    @objc func refreshTable() {
+        informationTable.reloadData()
     }
     
     func updateChart() {
@@ -53,6 +65,13 @@ class HistoryViewController: UIViewController {
         let dataSet = BarChartDataSet(entries: dataEntries, label: "Study Time")
         dataSet.colors = [UIColor.red]
         dataSet.valueFont = UIFont.systemFont(ofSize: 15)
+       
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .none
+        
+        let valueFormatter = ChartValueFormatter(numberFormatter: numberFormatter)
+        dataSet.valueFormatter = valueFormatter
+        
         let data = BarChartData(dataSet: dataSet)
         sessionHistoryChart.data = data
         sessionHistoryChart.xAxis.valueFormatter = IndexAxisValueFormatter(values: dayNames)
@@ -122,3 +141,55 @@ class HistoryViewController: UIViewController {
     }
 }
 
+extension HistoryViewController: UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 3
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return section == 0 ? "Pomodoros" : "Breaks"
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "informationCell", for: indexPath) as! InformationTableViewCell
+        
+        let userDefaults = UserDefaults.standard
+        switch indexPath.section {
+        case 0: // Pomodoros
+            switch indexPath.row {
+            case 0: // Started
+                cell.informationLabel.text = "Started"
+                cell.informationValue.text = "\(userDefaults.integer(forKey: "PomodorosStarted"))"
+            case 1: // Completed
+                cell.informationLabel.text = "Completed"
+                cell.informationValue.text = "\(userDefaults.integer(forKey: "PomodorosCompleted"))"
+            case 2: // Minutes
+                cell.informationLabel.text = "Minutes"
+                cell.informationValue.text =  "\(userDefaults.integer(forKey: "PomodorosMinutes") / 60)"
+            default:
+                break
+            }
+        case 1: // Breaks
+            switch indexPath.row {
+            case 0: // Started
+                cell.informationLabel.text = "Started"
+                cell.informationValue.text = "\(userDefaults.integer(forKey: "BreaksStarted"))"
+            case 1: // Completed
+                cell.informationLabel.text = "Completed"
+                cell.informationValue.text = "\(userDefaults.integer(forKey: "BreaksCompleted"))"
+            case 2: // Minutes
+                cell.informationLabel.text = "Minutes"
+                cell.informationValue.text =  "\(userDefaults.integer(forKey: "BreaksMinutes") / 60)"
+            default:
+                break
+            }
+        default:
+            break
+        }
+        return cell
+    }
+}
