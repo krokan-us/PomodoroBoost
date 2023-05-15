@@ -13,8 +13,8 @@ class ActivityViewController: UIViewController {
     @IBOutlet weak var progressBar: CircularProgressBar!
     @IBOutlet weak var timeLeftLabel: UILabel!
     @IBOutlet weak var startButton: UIButton!
+    @IBOutlet weak var resetButton: UIButton!
     @IBOutlet weak var sayingLabel: UILabel!
-    
     @IBOutlet weak var firstPomodoroIndicator: UIImageView!
     @IBOutlet weak var secondPomodoroIndicator: UIImageView!
     @IBOutlet weak var thirdPomodoroIndicator: UIImageView!
@@ -40,11 +40,11 @@ class ActivityViewController: UIViewController {
         case paused
     }
 
-    private var sessionTime: TimeInterval = 10 * 60
+    private var sessionTime: TimeInterval = 10
     private var breakTime: TimeInterval = 10
     private var longBreakTime: TimeInterval = 20
     
-    private var remainingSessionTime: TimeInterval = 10 * 60
+    private var remainingSessionTime: TimeInterval = 10
     private var remainingShortBreakTime: TimeInterval = 10
     
     private let sessionStatements: [String] = [
@@ -120,9 +120,15 @@ class ActivityViewController: UIViewController {
         if !hasTimerStarted {
             startButton.setTitle("Start", for: .normal)
             progressBar.putAnimation(animationName: "astronautOperatingLaptop")
-            setButton()
+            setStartButton()
+            setResetButton()
+            resetButton.isHidden = true
             updateTimeLabel()
             updateSayingLabel(category: .launch)
+        }else{
+            if !isOnBreak{
+                resetButton.isHidden = false
+            }
         }
     }
     
@@ -148,11 +154,48 @@ class ActivityViewController: UIViewController {
         }
     }
 
+    @IBAction func resetButtonTapped(_ sender: Any) {
+        // Invalidate and set timer to nil
+        timer?.invalidate()
+        timer = nil
+        
+        // Reset timer start status
+        hasTimerStarted = false
+
+        // Reset the state of the session
+        isOnBreak = false
+        timerState = .notStarted
+        remainingSessionTime = sessionTime
+        remainingShortBreakTime = breakTime
+
+        // Hide the reset button
+        resetButton.isHidden = true
+
+        // Set the start button title to "Start"
+        startButton.setTitle("Start", for: .normal)
+
+        // Set the animation to the initial one
+        progressBar.putAnimation(animationName: "astronautOperatingLaptop")
+
+        // Reset progress bar
+        progressBar.progress = 0
+
+        // Update the time label and saying label
+        updateTimeLabel()
+        updateSayingLabel(category: .launch)
+    }
+
     
-    private func setButton() {
+    private func setStartButton() {
         startButton.backgroundColor = .red
         startButton.layer.cornerRadius = 20
         startButton.tintColor = .white
+    }
+    
+    private func setResetButton() {
+        resetButton.backgroundColor = .orange
+        resetButton.layer.cornerRadius = 15
+        resetButton.tintColor = .white
     }
     
     private func startTimer() {
@@ -161,10 +204,13 @@ class ActivityViewController: UIViewController {
         timer?.invalidate()
         timer = nil
         
+        resetButton.isHidden = false
+        
         if isOnBreak {
             SessionManager.shared.updateBreaksStarted(count: 1)
         } else {
             SessionManager.shared.updatePomodorosStarted(count: 1)
+            NotificationCenter.default.post(name: .sessionCompleted, object: nil)
         }
         
         progressBar.putAnimation(animationName: isOnBreak ? "astronautInMug" : "astronautOnARocket")
@@ -252,6 +298,9 @@ class ActivityViewController: UIViewController {
         updateIndicators() // Update the indicators
         
         SessionManager.shared.saveSession(duration: Int(sessionTime))
+        
+        // Hide the reset button during breaks
+        resetButton.isHidden = true
     }
     
     
