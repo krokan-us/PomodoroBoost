@@ -7,6 +7,7 @@
 
 import UIKit
 import CoreData
+import UserNotifications
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -31,7 +32,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if defaults.object(forKey: "rounds") == nil {
             defaults.register(defaults: ["rounds": 4])
         }
-
+        
+        let center = UNUserNotificationCenter.current()
+        center.requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
+            if granted {
+                print("Notification permissions granted.")
+            } else {
+                print("Notification permissions denied.")
+            }
+        }
+        
         return true
     }
 
@@ -73,6 +83,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
-
 }
 
