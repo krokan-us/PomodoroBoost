@@ -261,7 +261,7 @@ class ActivityViewController: UIViewController {
             if remainingShortBreakTime <= 0 {
                 timer?.invalidate()
                 resetTimer()
-                AudioServicesPlaySystemSound(timerEndedSoundID)
+                playTimerEndedSound()
                 SessionManager.shared.updateBreaksCompleted(count: 1)
                 SessionManager.shared.updateBreaksMinutes(duration: breakTime)
                 NotificationCenter.default.post(name: .breakCompleted, object: nil)
@@ -270,7 +270,7 @@ class ActivityViewController: UIViewController {
             if remainingSessionTime <= 0 {
                 timer?.invalidate()
                 startBreak()
-                AudioServicesPlaySystemSound(timerEndedSoundID)
+                playTimerEndedSound()
                 SessionManager.shared.updatePomodorosCompleted(count: 1)
                 SessionManager.shared.updatePomodorosMinutes(duration: sessionTime)
                 NotificationCenter.default.post(name: .sessionCompleted, object: nil)
@@ -278,6 +278,14 @@ class ActivityViewController: UIViewController {
         }
     }
     
+    private func playTimerEndedSound() {
+        let defaults = UserDefaults.standard
+        let soundOnCompletion = defaults.bool(forKey: "soundOnCompletion")
+        
+        if soundOnCompletion {
+            AudioServicesPlaySystemSound(timerEndedSoundID)
+        }
+    }
     
     private func startBreak() {
         // Invalidate and set timer to nil before starting a break
