@@ -35,27 +35,66 @@ class SettingsViewController: UIViewController {
     
 
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         setButton()
         
-        if !isAnimationPut{
+        if !isAnimationPut {
             putAnimation()
         }
-        // Load the values from user defaults
+        
+        // Load the values from UserDefaults
         let defaults = UserDefaults.standard
         pomodoroSlider.value = defaults.float(forKey: "pomodoroDuration")
         shortBreakSlider.value = defaults.float(forKey: "shortBreakDuration")
         longBreakSlider.value = defaults.float(forKey: "longBreakDuration")
         roundsSlider.value = defaults.float(forKey: "rounds")
-        NotificationManager.shared.isNotificationsEnabled{isEnabled in
-            DispatchQueue.main.async{
-                if isEnabled{
-                    self.notificationsSwitch.isOn = true
-                }else{
+        soundOnCompletionSwitch.isOn = defaults.bool(forKey: "soundOnCompletion")
+
+        // Update the switch value based on the internal variable stored in UserDefaults
+        let internalNotificationsEnabled = defaults.bool(forKey: "internalNotificationsEnabled")
+        notificationsSwitch.isOn = internalNotificationsEnabled
+        
+        // Register for UIApplicationWillEnterForeground notification
+        NotificationCenter.default.addObserver(self, selector: #selector(appWillEnterForeground), name: UIApplication.willEnterForegroundNotification, object: nil)
+        
+        // Check the notifications status when the view appears
+        checkNotificationsStatus()
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        // Unregister the notification observer
+        NotificationCenter.default.removeObserver(self, name: UIApplication.willEnterForegroundNotification, object: nil)
+    }
+
+    @objc private func appWillEnterForeground() {
+        // Check the notifications status when the app becomes active again
+        checkNotificationsStatus()
+    }
+
+    private func checkNotificationsStatus() {
+        // Check if notifications are enabled on the system level
+        NotificationManager.shared.isNotificationsEnabled { isEnabled in
+            DispatchQueue.main.async {
+                // Load the values from UserDefaults
+                let defaults = UserDefaults.standard
+                let internalNotificationsEnabled = defaults.bool(forKey: "internalNotificationsEnabled")
+                
+                // Update the switch value based on the system-level notification settings
+                if isEnabled {
+                    // Notifications are enabled, check the internal variable
+                    if internalNotificationsEnabled {
+                        self.notificationsSwitch.isOn = true
+                    } else {
+                        self.notificationsSwitch.isOn = false
+                    }
+                } else {
+                    // Notifications are disabled, set the switch to false
                     self.notificationsSwitch.isOn = false
                 }
             }
         }
-        soundOnCompletionSwitch.isOn = defaults.bool(forKey: "soundOnCompletion")
     }
     
     @IBAction func pomodoroSliderValueChanged(_ sender: Any) {
@@ -79,11 +118,32 @@ class SettingsViewController: UIViewController {
     }
     
     @IBAction func notificationsSwitchValueChanged(_ sender: Any) {
-        guard let settingsURL = URL(string: UIApplication.openSettingsURLString) else {
-            return
+        if notificationsSwitch.isOn {
+            // Check if notifications are already enabled
+            NotificationManager.shared.isNotificationsEnabled { isEnabled in
+                if !isEnabled {
+                    // Notifications are not enabled, open settings to enable them
+                    guard let settingsURL = URL(string: UIApplication.openSettingsURLString) else {
+                        return
+                    }
+                    UIApplication.shared.open(settingsURL)
+                } else {
+                    // Notifications are already enabled, enable notifications in your app and set the internal variable
+                    // Add your code here to enable notifications and update the internal variable accordingly
+                    
+                    // Set the internal variable to true in UserDefaults
+                    UserDefaults.standard.set(true, forKey: "internalNotificationsEnabled")
+                }
+            }
+        } else {
+            // Disable notifications in your app and set the internal variable
+            // Add your code here to disable notifications and update the internal variable accordingly
+            
+            // Set the internal variable to false in UserDefaults
+            UserDefaults.standard.set(false, forKey: "internalNotificationsEnabled")
         }
-        UIApplication.shared.open(settingsURL)
     }
+
 
     @IBAction func soundOnCompletionValueChanged(_ sender: Any) {
         let defaults = UserDefaults.standard
