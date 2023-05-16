@@ -151,7 +151,7 @@ extension HistoryViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return section == 0 ? "Pomodoros" : "Breaks"
+        return section == 0 ? "Pomodoros (Lifetime)" : "Breaks (Lifetime)"
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
