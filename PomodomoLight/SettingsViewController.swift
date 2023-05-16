@@ -40,12 +40,22 @@ class SettingsViewController: UIViewController {
         if !isAnimationPut{
             putAnimation()
         }
-        // Load the slider values from user defaults
+        // Load the values from user defaults
         let defaults = UserDefaults.standard
         pomodoroSlider.value = defaults.float(forKey: "pomodoroDuration")
         shortBreakSlider.value = defaults.float(forKey: "shortBreakDuration")
         longBreakSlider.value = defaults.float(forKey: "longBreakDuration")
         roundsSlider.value = defaults.float(forKey: "rounds")
+        NotificationManager.shared.isNotificationsEnabled{isEnabled in
+            DispatchQueue.main.async{
+                if isEnabled{
+                    self.notificationsSwitch.isOn = true
+                }else{
+                    self.notificationsSwitch.isOn = false
+                }
+            }
+        }
+        soundOnCompletionSwitch.isOn = defaults.bool(forKey: "soundOnCompletion")
     }
     
     @IBAction func pomodoroSliderValueChanged(_ sender: Any) {
@@ -69,9 +79,15 @@ class SettingsViewController: UIViewController {
     }
     
     @IBAction func notificationsSwitchValueChanged(_ sender: Any) {
+        guard let settingsURL = URL(string: UIApplication.openSettingsURLString) else {
+            return
+        }
+        UIApplication.shared.open(settingsURL)
     }
-    
+
     @IBAction func soundOnCompletionValueChanged(_ sender: Any) {
+        let defaults = UserDefaults.standard
+            defaults.set(soundOnCompletionSwitch.isOn, forKey: "soundOnCompletion")
     }
     
     @IBAction func restoreButtonTapped(_ sender: Any) {
