@@ -10,7 +10,7 @@ import CoreData
 import UserNotifications
 
 @main
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
 
 
 
@@ -34,6 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         let center = UNUserNotificationCenter.current()
+        center.delegate = self
         center.requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
             if granted {
                 print("Notification permissions granted.")
@@ -41,6 +42,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 print("Notification permissions denied.")
             }
         }
+        
+        application.registerForRemoteNotifications()
         
         return true
     }
@@ -58,6 +61,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
+    
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        // Handle successful registration for remote notifications
+        // You can send the device token to your server for further processing if needed
+    }
+    
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        // Handle failed registration for remote notifications
+        print("Failed to register for remote notifications: \(error.localizedDescription)")
+    }
+
+
 
     
     var window: UIWindow?
@@ -82,6 +97,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
             }
         }
+    }
+    
+    // Handle notifications when the user interacts with them (tapped, swiped, etc.)
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        // Handle user's response to the notification
+        completionHandler()
     }
 }
 

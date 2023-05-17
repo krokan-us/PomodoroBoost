@@ -28,6 +28,8 @@ class ActivityViewController: UIViewController {
     private var hasViewDisappeared: Bool = false
     private var wasOnBreak = false
     private let timerEndedSoundID: SystemSoundID = 1005
+    private var backgroundTask: UIBackgroundTaskIdentifier = .invalid
+
 
     
     var timerState: TimerState = .notStarted
@@ -146,13 +148,14 @@ class ActivityViewController: UIViewController {
         switch timerState {
         case .notStarted:
             startTimer()
-            timerState = .session
         case .session, .shortBreak, .longBreak:
             pauseTimer()
         case .paused:
             continueTimer()
         }
     }
+
+
 
     @IBAction func resetButtonTapped(_ sender: Any) {
         // Invalidate and set timer to nil
@@ -220,7 +223,18 @@ class ActivityViewController: UIViewController {
         timerState = isOnBreak ? .shortBreak : .session
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateCountdown), userInfo: nil, repeats: true)
         updateSayingLabel(category: isOnBreak ? .break : .session)
+        
+        // Schedule the notification
+        let notificationContent = UNMutableNotificationContent()
+        notificationContent.title = isOnBreak ? "Break Ended" : "Session Ended"
+        notificationContent.body = isOnBreak ? "Your break has ended." : "Your session has ended."
+        notificationContent.sound = UNNotificationSound.default
+        
+        let timeInterval = isOnBreak ? remainingShortBreakTime : remainingSessionTime
+        let identifier = isOnBreak ? "breakEndedNotification" : "sessionEndedNotification"
+        scheduleNotification(content: notificationContent, timeInterval: timeInterval, identifier: identifier)
     }
+
     
     
     private func pauseTimer() {
@@ -246,34 +260,36 @@ class ActivityViewController: UIViewController {
     }
     
     @objc private func updateCountdown() {
-        if isOnBreak {
-            updateTime(&remainingShortBreakTime)
-        } else {
-            updateTime(&remainingSessionTime)
-        }
-        
-        updateTimeLabel()
-        
-        let progress = CGFloat(1 - (isOnBreak ? remainingShortBreakTime : remainingSessionTime) / (isOnBreak ? breakTime : sessionTime))
-        progressBar.progress = progress
-        
-        if isOnBreak {
-            if remainingShortBreakTime <= 0 {
-                timer?.invalidate()
-                resetTimer()
-                playTimerEndedSound()
-                SessionManager.shared.updateBreaksCompleted(count: 1)
-                SessionManager.shared.updateBreaksMinutes(duration: breakTime)
-                NotificationCenter.default.post(name: .breakCompleted, object: nil)
+        DispatchQueue.main.async {
+            if self.isOnBreak {
+                self.updateTime(&self.remainingShortBreakTime)
+            } else {
+                self.updateTime(&self.remainingSessionTime)
             }
-        } else {
-            if remainingSessionTime <= 0 {
-                timer?.invalidate()
-                startBreak()
-                playTimerEndedSound()
-                SessionManager.shared.updatePomodorosCompleted(count: 1)
-                SessionManager.shared.updatePomodorosMinutes(duration: sessionTime)
-                NotificationCenter.default.post(name: .sessionCompleted, object: nil)
+            
+            self.updateTimeLabel()
+            
+            let progress = CGFloat(1 - (self.isOnBreak ? self.remainingShortBreakTime : self.remainingSessionTime) / (self.isOnBreak ? self.breakTime : self.sessionTime))
+            self.progressBar.progress = progress
+            
+            if self.isOnBreak {
+                if self.remainingShortBreakTime <= 0 {
+                    self.timer?.invalidate()
+                    self.resetTimer()
+                    self.playTimerEndedSound()
+                    SessionManager.shared.updateBreaksCompleted(count: 1)
+                    SessionManager.shared.updateBreaksMinutes(duration: self.breakTime)
+                    NotificationCenter.default.post(name: .breakCompleted, object: nil)
+                }
+            } else {
+                if self.remainingSessionTime <= 0 {
+                    self.timer?.invalidate()
+                    self.startBreak()
+                    self.playTimerEndedSound()
+                    SessionManager.shared.updatePomodorosCompleted(count: 1)
+                    SessionManager.shared.updatePomodorosMinutes(duration: self.sessionTime)
+                    NotificationCenter.default.post(name: .sessionCompleted, object: nil)
+                }
             }
         }
     }
@@ -309,6 +325,15 @@ class ActivityViewController: UIViewController {
         
         // Hide the reset button during breaks
         resetButton.isHidden = true
+        
+        let notificationContent = UNMutableNotificationContent()
+            notificationContent.title = "Break Ended"
+            notificationContent.body = "Your break has ended."
+            notificationContent.sound = UNNotificationSound.default
+            
+            let timeInterval = remainingShortBreakTime
+            let identifier = "breakEndedNotification"
+            scheduleNotification(content: notificationContent, timeInterval: timeInterval, identifier: identifier)
     }
     
     
@@ -398,6 +423,24 @@ class ActivityViewController: UIViewController {
         
         let randomIndex = Int.random(in: 0..<statements.count)
         sayingLabel.text = statements[randomIndex]
+    }
+    
+    private func scheduleNotification(content: UNMutableNotificationContent, timeInterval: TimeInterval, identifier: String) {
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: timeInterval, repeats: false)
+        let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
+        
+        let notificationCenter = UNUserNotificationCenter.current()
+        let backgroundTaskIdentifier = UIApplication.shared.beginBackgroundTask(expirationHandler: nil)
+        
+        notificationCenter.add(request) { (error) in
+            if let error = error {
+                // Handle notification scheduling error
+                print("Notification scheduling error: \(error.localizedDescription)")
+            }
+            
+            // End the background task once the notification is scheduled
+            UIApplication.shared.endBackgroundTask(backgroundTaskIdentifier)
+        }
     }
 }
 
