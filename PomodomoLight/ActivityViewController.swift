@@ -30,8 +30,6 @@ class ActivityViewController: UIViewController {
     private let timerEndedSoundID: SystemSoundID = 1005
     private var backgroundTask: UIBackgroundTaskIdentifier = .invalid
 
-
-    
     var timerState: TimerState = .notStarted
     
     enum TimerState {
@@ -113,21 +111,21 @@ class ActivityViewController: UIViewController {
     ]
     
     private let sessionEndedNotifications = [
-        "🎉 Session complete! Great job!",
-        "👏 You did it! Well done!",
-        "👍 Congrats on finishing!",
-        "🌟 Fantastic session! Keep it up!",
-        "✅ Session done! Awesome work!",
-        "🎓 Session complete! On fire!",
-        "✨ Bravo! Session conquered!",
-        "🙌 Way to go! Session wrapped up!",
-        "👊 Nailed it! Session accomplished!",
-        "💯 Session done! Amazing progress!",
-        "✨ Session complete! Keep shining!",
-        "🚀 Unstoppable! Session finished!",
-        "🎊 Applause! Session concluded!",
-        "👏 Pat on the back! Session completed!",
-        "💪 Powerhouse! Powered through!"
+        "☕️ Time for a break!",
+        "😌 Relax and recharge!",
+        "🏖️ Take a rest!",
+        "🧘‍♀️ Clear your mind!",
+        "🌴 Enjoy a break!",
+        "👣 Stretch and relax!",
+        "🌞 Refresh yourself!",
+        "🎶 Listen to soothing music!",
+        "📖 Read a book!",
+        "💤 Power nap time!",
+        "🧁 Treat yourself!",
+        "🤗 Connect with a friend!",
+        "⏰ Take a break!",
+        "🔆 Pause and relax!",
+        "💆‍♂️ Rejuvenate yourself!"
     ]
     
     private let breakEndedNotifications = [
