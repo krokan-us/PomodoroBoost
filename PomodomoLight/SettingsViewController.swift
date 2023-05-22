@@ -126,7 +126,9 @@ class SettingsViewController: UIViewController {
                     guard let settingsURL = URL(string: UIApplication.openSettingsURLString) else {
                         return
                     }
-                    UIApplication.shared.open(settingsURL)
+                    DispatchQueue.main.async {
+                        UIApplication.shared.open(settingsURL)
+                    }
                 } else {
                     // Notifications are already enabled, enable notifications in your app and set the internal variable
                     // Add your code here to enable notifications and update the internal variable accordingly
