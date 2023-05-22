@@ -112,6 +112,47 @@ class ActivityViewController: UIViewController {
         "🤝 Connect and thrive!"
     ]
     
+    private let sessionEndedNotifications = [
+        "🎉 Session complete! Great job!",
+        "👏 You did it! Well done!",
+        "👍 Congrats on finishing!",
+        "🌟 Fantastic session! Keep it up!",
+        "✅ Session done! Awesome work!",
+        "🎓 Session complete! You're on fire!",
+        "✨ Bravo! Another session conquered!",
+        "🙌 Way to go! Session wrapped up!",
+        "👊 Nailed it! Session accomplished!",
+        "💯 Session done! Your progress is amazing!",
+        "✨ Session complete! Keep shining bright!",
+        "🚀 You're unstoppable! Session finished!",
+        "🎊 Applause! You've successfully concluded the session!",
+        "👏 Pat yourself on the back! Session completed!",
+        "💪 Powerhouse! You powered through the session!"
+    ]
+    
+    private let breakEndedNotifications = [
+        "⏰ Break's over! Let's continue!",
+        "💪 Ready to rock the next session!",
+        "🔥 Back in action! Keep it up!",
+        "⚡️ Break's done. Keep your momentum going!",
+        "💥 Recharged and ready? Let's go!",
+        "⏰ Break's over! Let's continue!",
+        "💪 Ready to rock the next session!",
+        "🔥 Back in action! Keep it up!",
+        "⚡️ Break's done. Keep your momentum going!",
+        "💥 Recharged and ready? Let's go!",
+        "⚡️ Break's over! Let's ignite the session!",
+        "🔥 Back in action! Let's make waves!",
+        "💥 Break time's up! Let's crush it!",
+        "🌟 Break's done! Shine even brighter now!",
+        "⏳ Time's up! Let's dive back in!",
+        "💪 Recharged and refueled! Let's dominate!",
+        "✨ Break complete! Let's sparkle in the session!",
+        "⚡️ Energized and ready! Back to the session!",
+        "🔥 Break over! Unleash your brilliance!",
+        "💫 Break's end! Let's soar in the session!"
+    ]
+
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -227,7 +268,15 @@ class ActivityViewController: UIViewController {
         // Schedule the notification
         let notificationContent = UNMutableNotificationContent()
         notificationContent.title = isOnBreak ? "Break Ended" : "Session Ended"
-        notificationContent.body = isOnBreak ? "Your break has ended." : "Your session has ended."
+        
+        var notificationBody: String
+        if isOnBreak {
+            notificationBody = breakEndedNotifications.randomElement() ?? "Your break has ended."
+        } else {
+            notificationBody = sessionEndedNotifications.randomElement() ?? "Your session has ended."
+        }
+        notificationContent.body = notificationBody
+        
         notificationContent.sound = UNNotificationSound.default
         
         let timeInterval = isOnBreak ? remainingShortBreakTime : remainingSessionTime
@@ -298,7 +347,7 @@ class ActivityViewController: UIViewController {
         let defaults = UserDefaults.standard
         let soundOnCompletion = defaults.bool(forKey: "soundOnCompletion")
         
-        if soundOnCompletion {
+        if soundOnCompletion && UIApplication.shared.applicationState == .active {
             AudioServicesPlaySystemSound(timerEndedSoundID)
         }
     }
@@ -325,15 +374,6 @@ class ActivityViewController: UIViewController {
         
         // Hide the reset button during breaks
         resetButton.isHidden = true
-        
-        let notificationContent = UNMutableNotificationContent()
-            notificationContent.title = "Break Ended"
-            notificationContent.body = "Your break has ended."
-            notificationContent.sound = UNNotificationSound.default
-            
-            let timeInterval = remainingShortBreakTime
-            let identifier = "breakEndedNotification"
-            scheduleNotification(content: notificationContent, timeInterval: timeInterval, identifier: identifier)
     }
     
     
