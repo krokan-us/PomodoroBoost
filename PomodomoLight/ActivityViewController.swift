@@ -307,7 +307,11 @@ class ActivityViewController: UIViewController {
                     SessionManager.shared.updateBreaksCompleted(count: 1)
                     SessionManager.shared.updateBreaksMinutes(duration: self.breakTime)
                     NotificationCenter.default.post(name: .breakCompleted, object: nil)
-                    self.sendBreakEndedNotification() // Send "breakEnded" notification
+                    let defaults = UserDefaults.standard
+                    let internalNotificationsEnabled = defaults.bool(forKey: "internalNotificationsEnabled")
+                    if internalNotificationsEnabled{
+                        self.sendBreakEndedNotification() // Send "breakEnded" notification
+                    }
                 }
             } else {
                 if self.remainingSessionTime <= 0 {
@@ -317,7 +321,11 @@ class ActivityViewController: UIViewController {
                     SessionManager.shared.updatePomodorosCompleted(count: 1)
                     SessionManager.shared.updatePomodorosMinutes(duration: self.sessionTime)
                     NotificationCenter.default.post(name: .sessionCompleted, object: nil)
-                    self.sendSessionEndedNotification() // Send "sessionEnded" notification
+                    let defaults = UserDefaults.standard
+                    let internalNotificationsEnabled = defaults.bool(forKey: "internalNotificationsEnabled")
+                    if internalNotificationsEnabled{
+                        self.sendSessionEndedNotification() // Send "sessionEnded" notification
+                    }
                 }
             }
         }
