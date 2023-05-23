@@ -17,6 +17,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         let defaults = UserDefaults.standard
         
+        if defaults.object(forKey: "isFirstLaunch") == nil {
+            defaults.set(true, forKey: "isFirstLaunch")
+        }
+
         if defaults.object(forKey: "pomodoroDuration") == nil {
             defaults.register(defaults: ["pomodoroDuration": 25])
         }
