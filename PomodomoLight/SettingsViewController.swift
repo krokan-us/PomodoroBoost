@@ -5,6 +5,7 @@
 //  Created by Asım Altınışık on 10.05.2023.
 //
 
+import UserNotifications
 import UIKit
 import Lottie
 
@@ -28,6 +29,8 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var restoreToDefaultsButton: UIButton!
     @IBOutlet weak var soundOnCompletionSwitch: UISwitch!
     
+    private let notificationCenter = UNUserNotificationCenter.current()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         updateLabels()
@@ -58,7 +61,25 @@ class SettingsViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(appWillEnterForeground), name: UIApplication.willEnterForegroundNotification, object: nil)
         
         // Check the notifications status when the view appears
-        checkNotificationsStatus()
+        if defaults.bool(forKey: "isFirstLaunch") {
+            notificationCenter.getNotificationSettings { settings in
+                DispatchQueue.main.async {
+                    if settings.authorizationStatus == .authorized {
+                        self.notificationsSwitch.isOn = true
+                    } else {
+                        self.notificationsSwitch.isOn = false
+                    }
+                }
+            }
+        } else {
+            // It is not the first launch of the app
+            
+            // Set isFirstLaunch to false for subsequent launches
+            defaults.set(false, forKey: "isFirstLaunch")
+            
+            // Check the status of notification permissions
+            checkNotificationsStatus()
+        }
     }
 
     override func viewWillDisappear(_ animated: Bool) {
