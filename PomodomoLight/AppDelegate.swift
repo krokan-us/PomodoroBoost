@@ -33,6 +33,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             defaults.register(defaults: ["longBreakDuration": 30])
         }
         
+        if defaults.object(forKey: "soundOnCompletion") == nil {
+            defaults.register(defaults: ["soundOnCompletion": true])
+        }
+                
         if defaults.object(forKey: "rounds") == nil {
             defaults.register(defaults: ["rounds": 4])
         }
