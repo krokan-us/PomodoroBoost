@@ -29,6 +29,7 @@ class ActivityViewController: UIViewController {
     private var wasOnBreak = false
     private let timerEndedSoundID: SystemSoundID = 1005
     private var backgroundTask: UIBackgroundTaskIdentifier = .invalid
+    let defaults = UserDefaults.standard
 
     var timerState: TimerState = .notStarted
     
@@ -40,12 +41,14 @@ class ActivityViewController: UIViewController {
         case paused
     }
 
-    private var sessionTime: TimeInterval = 10
-    private var breakTime: TimeInterval = 10
-    private var longBreakTime: TimeInterval = 20
+    private var sessionTime: TimeInterval = 0
+    private var shortBreakTime: TimeInterval = 0
+    private var longBreakTime: TimeInterval = 0
     
-    private var remainingSessionTime: TimeInterval = 10
-    private var remainingShortBreakTime: TimeInterval = 10
+    private var remainingSessionTime: TimeInterval = 0
+    private var remainingShortBreakTime: TimeInterval = 0
+    private var remainingLongBreakTime: TimeInterval = 0
+
     
     private let sessionStatements: [String] = [
         "🚀 Let's work!",
@@ -79,7 +82,7 @@ class ActivityViewController: UIViewController {
         "📖 Read a book!",
         "💤 Take a power nap!",
         "🧁 Treat yourself!",
-        "🤗 Connect with a friend!",
+        "🤗 Connect with a friend!"
     ]
     
     private let pauseStatements: [String] = [
@@ -148,6 +151,16 @@ class ActivityViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        sessionTime = TimeInterval(defaults.float(forKey: "pomodoroDuration"))
+        shortBreakTime = TimeInterval(defaults.float(forKey: "shortBreakDuration"))
+        longBreakTime = TimeInterval(defaults.float(forKey: "longBreakDuration"))
+
+        remainingSessionTime = sessionTime
+        remainingShortBreakTime = shortBreakTime
+        remainingLongBreakTime = longBreakTime
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(refreshLabelIfSessionNotStarted), name: .sessionDurationChanged, object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -178,6 +191,12 @@ class ActivityViewController: UIViewController {
         hasViewDisappeared = false
     }
     
+    @objc func refreshLabelIfSessionNotStarted() {
+        if timerState == .notStarted{
+            resetButtonTapped(resetButton)
+        }
+    }
+    
     @IBAction func startButtonTapped(_ sender: Any) {
         switch timerState {
         case .notStarted:
@@ -200,8 +219,9 @@ class ActivityViewController: UIViewController {
         // Reset the state of the session
         isOnBreak = false
         timerState = .notStarted
-        remainingSessionTime = sessionTime
-        remainingShortBreakTime = breakTime
+        
+        remainingSessionTime = TimeInterval(defaults.float(forKey: "pomodoroDuration"))
+        remainingShortBreakTime = TimeInterval(defaults.float(forKey: "shortBreakDuration"))
 
         // Hide the reset button
         resetButton.isHidden = true
@@ -240,6 +260,11 @@ class ActivityViewController: UIViewController {
         timer = nil
         
         resetButton.isHidden = false
+        
+        // Update session and break durations from UserDefaults
+        sessionTime = TimeInterval(defaults.float(forKey: "pomodoroDuration"))
+        shortBreakTime = TimeInterval(defaults.float(forKey: "shortBreakDuration"))
+        longBreakTime = TimeInterval(defaults.float(forKey: "longBreakDuration"))
         
         if isOnBreak {
             SessionManager.shared.updateBreaksStarted(count: 1)
@@ -296,7 +321,7 @@ class ActivityViewController: UIViewController {
             
             self.updateTimeLabel()
             
-            let progress = CGFloat(1 - (self.isOnBreak ? self.remainingShortBreakTime : self.remainingSessionTime) / (self.isOnBreak ? self.breakTime : self.sessionTime))
+            let progress = CGFloat(1 - (self.isOnBreak ? self.remainingShortBreakTime : self.remainingSessionTime) / (self.isOnBreak ? self.shortBreakTime : self.sessionTime))
             self.progressBar.progress = progress
             
             if self.isOnBreak {
@@ -305,7 +330,7 @@ class ActivityViewController: UIViewController {
                     self.resetTimer()
                     self.playTimerEndedSound()
                     SessionManager.shared.updateBreaksCompleted(count: 1)
-                    SessionManager.shared.updateBreaksMinutes(duration: self.breakTime)
+                    SessionManager.shared.updateBreaksMinutes(duration: self.shortBreakTime)
                     NotificationCenter.default.post(name: .breakCompleted, object: nil)
                     let defaults = UserDefaults.standard
                     let internalNotificationsEnabled = defaults.bool(forKey: "internalNotificationsEnabled")
@@ -366,17 +391,24 @@ class ActivityViewController: UIViewController {
         timer = nil
         
         isOnBreak = true
+        
+        // Update break duration from UserDefaults
+        shortBreakTime = TimeInterval(defaults.float(forKey: "shortBreakDuration"))
+        longBreakTime = TimeInterval(defaults.float(forKey: "longBreakDuration"))
+        
         progressBar.barColor = .green
         progressBar.putAnimation(animationName: "astronautInMug")
         
         // Check if 4 sessions are completed and set break duration accordingly
-        remainingShortBreakTime = completedSessions == 4 ? longBreakTime : breakTime
+        remainingShortBreakTime = completedSessions == 4 ? longBreakTime : shortBreakTime
         
         updateTimeLabel()
-        startTimer()
         
         completedSessions += 1 // Increment the completed sessions count
         updateIndicators() // Update the indicators
+        print("Completed sessions: " + String(completedSessions))
+        print("Break duration: " + String(remainingShortBreakTime))
+        startTimer()
         
         SessionManager.shared.saveSession(duration: Int(sessionTime))
         
