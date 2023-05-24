@@ -17,13 +17,11 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var pomodoroSlider: UISlider!
     @IBOutlet weak var shortBreakSlider: UISlider!
     @IBOutlet weak var longBreakSlider: UISlider!
-    @IBOutlet weak var roundsSlider: UISlider!
     
     
     @IBOutlet weak var pomodoroDurationLabel: UILabel!
     @IBOutlet weak var shortBreakDurationLabel: UILabel!
     @IBOutlet weak var longBreakDurationLabel: UILabel!
-    @IBOutlet weak var roundsLabel: UILabel!
     
     @IBOutlet weak var notificationsSwitch: UISwitch!
     @IBOutlet weak var restoreToDefaultsButton: UIButton!
@@ -50,7 +48,6 @@ class SettingsViewController: UIViewController {
         pomodoroSlider.value = defaults.float(forKey: "pomodoroDuration")
         shortBreakSlider.value = defaults.float(forKey: "shortBreakDuration")
         longBreakSlider.value = defaults.float(forKey: "longBreakDuration")
-        roundsSlider.value = defaults.float(forKey: "rounds")
         soundOnCompletionSwitch.isOn = defaults.bool(forKey: "soundOnCompletion")
 
         // Update the switch value based on the internal variable stored in UserDefaults
@@ -63,21 +60,18 @@ class SettingsViewController: UIViewController {
         // Check the notifications status when the view appears
         if defaults.bool(forKey: "isFirstLaunch") {
             notificationCenter.getNotificationSettings { settings in
-                DispatchQueue.main.async {
-                    if settings.authorizationStatus == .authorized {
+                if settings.authorizationStatus == .authorized {
+                    DispatchQueue.main.async {
                         self.notificationsSwitch.isOn = true
-                    } else {
+                    }
+                } else {
+                    DispatchQueue.main.async {
                         self.notificationsSwitch.isOn = false
                     }
                 }
             }
         } else {
-            // It is not the first launch of the app
-            
-            // Set isFirstLaunch to false for subsequent launches
             defaults.set(false, forKey: "isFirstLaunch")
-            
-            // Check the status of notification permissions
             checkNotificationsStatus()
         }
     }
@@ -121,6 +115,7 @@ class SettingsViewController: UIViewController {
     @IBAction func pomodoroSliderValueChanged(_ sender: Any) {
         updateLabels()
         saveSliderValuesToUserDefaults()
+        NotificationCenter.default.post(name: .sessionDurationChanged, object: nil)
     }
     
     @IBAction func shortBreakSliderValueChanged(_ sender: Any) {
@@ -129,11 +124,6 @@ class SettingsViewController: UIViewController {
     }
     
     @IBAction func longBreakSliderValueChanged(_ sender: Any) {
-        updateLabels()
-        saveSliderValuesToUserDefaults()
-    }
-    
-    @IBAction func roundsSliderValueChanged(_ sender: Any) {
         updateLabels()
         saveSliderValuesToUserDefaults()
     }
@@ -183,7 +173,6 @@ class SettingsViewController: UIViewController {
         pomodoroSlider.value = defaults.float(forKey: "pomodoroDuration")
         shortBreakSlider.value = defaults.float(forKey: "shortBreakDuration")
         longBreakSlider.value = defaults.float(forKey: "longBreakDuration")
-        roundsSlider.value = defaults.float(forKey: "rounds")
         
         updateLabels()
     }
@@ -201,12 +190,10 @@ class SettingsViewController: UIViewController {
         let pomodoroDuration = Int(defaults.float(forKey: "pomodoroDuration"))
         let shortBreakDuration = Int(defaults.float(forKey: "shortBreakDuration"))
         let longBreakDuration = Int(defaults.float(forKey: "longBreakDuration"))
-        let rounds = Int(roundsSlider.value)
         
         pomodoroDurationLabel.text = "\(pomodoroDuration)m"
         shortBreakDurationLabel.text = "\(shortBreakDuration)m"
         longBreakDurationLabel.text = "\(longBreakDuration)m"
-        roundsLabel.text = "\(rounds)"
     }
     
     private func saveSliderValuesToUserDefaults() {
@@ -214,7 +201,6 @@ class SettingsViewController: UIViewController {
         defaults.set(pomodoroSlider.value, forKey: "pomodoroDuration")
         defaults.set(shortBreakSlider.value, forKey: "shortBreakDuration")
         defaults.set(longBreakSlider.value, forKey: "longBreakDuration")
-        defaults.set(roundsSlider.value, forKey: "rounds")
         defaults.synchronize()
     }
     
@@ -227,4 +213,8 @@ class SettingsViewController: UIViewController {
         settingsAnimation.loopMode = .loop
         settingsAnimation.play()
     }
+}
+
+extension Notification.Name {
+    static let sessionDurationChanged = Notification.Name("sessionDurationChanged")
 }
