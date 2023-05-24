@@ -152,9 +152,9 @@ class ActivityViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        sessionTime = TimeInterval(defaults.float(forKey: "pomodoroDuration"))
-        shortBreakTime = TimeInterval(defaults.float(forKey: "shortBreakDuration"))
-        longBreakTime = TimeInterval(defaults.float(forKey: "longBreakDuration"))
+        sessionTime = TimeInterval(defaults.float(forKey: "pomodoroDuration")) * 60
+        shortBreakTime = TimeInterval(defaults.float(forKey: "shortBreakDuration")) * 60
+        longBreakTime = TimeInterval(defaults.float(forKey: "longBreakDuration")) * 60
 
         remainingSessionTime = sessionTime
         remainingShortBreakTime = shortBreakTime
@@ -220,8 +220,8 @@ class ActivityViewController: UIViewController {
         isOnBreak = false
         timerState = .notStarted
         
-        remainingSessionTime = TimeInterval(defaults.float(forKey: "pomodoroDuration"))
-        remainingShortBreakTime = TimeInterval(defaults.float(forKey: "shortBreakDuration"))
+        remainingSessionTime = TimeInterval(defaults.float(forKey: "pomodoroDuration")) * 60
+        remainingShortBreakTime = TimeInterval(defaults.float(forKey: "shortBreakDuration")) * 60
 
         // Hide the reset button
         resetButton.isHidden = true
@@ -262,9 +262,9 @@ class ActivityViewController: UIViewController {
         resetButton.isHidden = false
         
         // Update session and break durations from UserDefaults
-        sessionTime = TimeInterval(defaults.float(forKey: "pomodoroDuration"))
-        shortBreakTime = TimeInterval(defaults.float(forKey: "shortBreakDuration"))
-        longBreakTime = TimeInterval(defaults.float(forKey: "longBreakDuration"))
+        sessionTime = TimeInterval(defaults.float(forKey: "pomodoroDuration")) * 60
+        shortBreakTime = TimeInterval(defaults.float(forKey: "shortBreakDuration")) * 60
+        longBreakTime = TimeInterval(defaults.float(forKey: "longBreakDuration")) * 60
         
         if isOnBreak {
             SessionManager.shared.updateBreaksStarted(count: 1)
@@ -393,8 +393,8 @@ class ActivityViewController: UIViewController {
         isOnBreak = true
         
         // Update break duration from UserDefaults
-        shortBreakTime = TimeInterval(defaults.float(forKey: "shortBreakDuration"))
-        longBreakTime = TimeInterval(defaults.float(forKey: "longBreakDuration"))
+        shortBreakTime = TimeInterval(defaults.float(forKey: "shortBreakDuration")) * 60
+        longBreakTime = TimeInterval(defaults.float(forKey: "longBreakDuration")) * 60
         
         progressBar.barColor = .green
         progressBar.putAnimation(animationName: "astronautInMug")
