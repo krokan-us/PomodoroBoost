@@ -113,17 +113,23 @@ class SettingsViewController: UIViewController {
     }
     
     @IBAction func pomodoroSliderValueChanged(_ sender: Any) {
+        let roundedValue = round(pomodoroSlider.value / 5) * 5
+        pomodoroSlider.value = roundedValue
         updateLabels()
         saveSliderValuesToUserDefaults()
         NotificationCenter.default.post(name: .sessionDurationChanged, object: nil)
     }
     
     @IBAction func shortBreakSliderValueChanged(_ sender: Any) {
+        let roundedValue = round(shortBreakSlider.value / 5) * 5
+        shortBreakSlider.value = roundedValue
         updateLabels()
         saveSliderValuesToUserDefaults()
     }
-    
+
     @IBAction func longBreakSliderValueChanged(_ sender: Any) {
+        let roundedValue = round(longBreakSlider.value / 5) * 5
+        longBreakSlider.value = roundedValue
         updateLabels()
         saveSliderValuesToUserDefaults()
     }
@@ -175,6 +181,7 @@ class SettingsViewController: UIViewController {
         longBreakSlider.value = defaults.float(forKey: "longBreakDuration")
         
         updateLabels()
+        NotificationCenter.default.post(name: .sessionDurationChanged, object: nil)
     }
     private func setButton() {
         restoreToDefaultsButton.backgroundColor = .red
@@ -198,9 +205,9 @@ class SettingsViewController: UIViewController {
     
     private func saveSliderValuesToUserDefaults() {
         let defaults = UserDefaults.standard
-        defaults.set(pomodoroSlider.value, forKey: "pomodoroDuration")
-        defaults.set(shortBreakSlider.value, forKey: "shortBreakDuration")
-        defaults.set(longBreakSlider.value, forKey: "longBreakDuration")
+        defaults.set(Int(round(pomodoroSlider.value)), forKey: "pomodoroDuration")
+        defaults.set(Int(round(shortBreakSlider.value)), forKey: "shortBreakDuration")
+        defaults.set(Int(round(longBreakSlider.value)), forKey: "longBreakDuration")
         defaults.synchronize()
     }
     
