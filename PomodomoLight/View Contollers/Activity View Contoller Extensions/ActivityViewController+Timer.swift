@@ -43,6 +43,37 @@ extension ActivityViewController{
         updateSayingLabel(category: isOnBreak ? .break : .session)
     }
     
+    func startBreak() {
+        // Invalidate and set timer to nil before starting a break
+        timer?.invalidate()
+        timer = nil
+        
+        isOnBreak = true
+        
+        // Update break duration from UserDefaults
+        shortBreakTime = TimeInterval(defaults.float(forKey: "shortBreakDuration")) * 1
+        longBreakTime = TimeInterval(defaults.float(forKey: "longBreakDuration")) * 1
+        
+        progressBar.barColor = .green
+        progressBar.putAnimation(animationName: "astronautInMug")
+        
+        // Check if 4 sessions are completed and set break duration accordingly
+        remainingShortBreakTime = completedSessions == 4 ? longBreakTime : shortBreakTime
+        
+        updateTimeLabel()
+        
+        completedSessions += 1 // Increment the completed sessions count
+        updateIndicators() // Update the indicators
+        print("Completed sessions: " + String(completedSessions))
+        print("Break duration: " + String(remainingShortBreakTime))
+        startTimer()
+        
+        SessionManager.shared.saveSession(duration: Int(sessionTime))
+        
+        // Hide the reset button during breaks
+        resetButton.isHidden = true
+    }
+    
     func pauseTimer() {
         startButton.setTitle("Continue", for: .normal)
         progressBar.putAnimation(animationName: "astronautHoldingAStar")
