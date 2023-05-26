@@ -29,6 +29,9 @@ class ActivityViewController: UIViewController {
     private var wasOnBreak = false
     private let timerEndedSoundID: SystemSoundID = 1005
     private var backgroundTask: UIBackgroundTaskIdentifier = .invalid
+    private var backgroundTime: Date?
+    private let backgroundQueue = DispatchQueue(label: "com.pomodoroLight.backgroundQueue", qos: .background)
+
     let defaults = UserDefaults.standard
 
     var timerState: TimerState = .notStarted
@@ -125,6 +128,63 @@ class ActivityViewController: UIViewController {
         remainingLongBreakTime = longBreakTime
         
         NotificationCenter.default.addObserver(self, selector: #selector(refreshLabelIfSessionNotStarted), name: .sessionDurationChanged, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(applicationDidEnterBackground), name: UIApplication.didEnterBackgroundNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(applicationWillEnterForeground), name: UIApplication.willEnterForegroundNotification, object: nil)
+    }
+    
+    @objc private func applicationDidEnterBackground() {
+        // Store the current time when the app enters the background
+        backgroundTime = Date()
+    }
+    
+    @objc private func applicationWillEnterForeground() {
+        backgroundQueue.async {
+            if let backgroundTime = self.backgroundTime {
+                let elapsedBackgroundTime = Date().timeIntervalSince(backgroundTime)
+                
+                DispatchQueue.main.async {
+                    if self.isOnBreak {
+                        self.remainingShortBreakTime -= elapsedBackgroundTime
+                        if self.remainingShortBreakTime <= 0 {
+                            // The break time has elapsed
+                            self.resetTimer()
+                            self.playTimerEndedSound()
+                            SessionManager.shared.updateBreaksCompleted(count: 1)
+                            SessionManager.shared.updateBreaksMinutes(duration: self.shortBreakTime)
+                            NotificationCenter.default.post(name: .breakCompleted, object: nil)
+                            let defaults = UserDefaults.standard
+                            let internalNotificationsEnabled = defaults.bool(forKey: "internalNotificationsEnabled")
+                            if internalNotificationsEnabled {
+                                NotificationManager.shared.sendBreakEndedNotification()
+                            }
+                        }
+                    } else {
+                        self.remainingSessionTime -= elapsedBackgroundTime
+                        if self.remainingSessionTime <= 0 {
+                            // The session time has elapsed
+                            self.startBreak()
+                            self.playTimerEndedSound()
+                            SessionManager.shared.updatePomodorosCompleted(count: 1)
+                            SessionManager.shared.updatePomodorosMinutes(duration: self.sessionTime)
+                            NotificationCenter.default.post(name: .sessionCompleted, object: nil)
+                            let defaults = UserDefaults.standard
+                            let internalNotificationsEnabled = defaults.bool(forKey: "internalNotificationsEnabled")
+                            if internalNotificationsEnabled {
+                                NotificationManager.shared.sendSessionEndedNotification()
+                            }
+                        }
+                    }
+                    
+                    // Reset the stored background time
+                    self.backgroundTime = nil
+                    
+                    // Restart the timer if it was previously running
+                    if self.timerState == .session || self.timerState == .shortBreak {
+                        self.startTimer()
+                    }
+                }
+            }
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
