@@ -10,6 +10,10 @@
 		160CF0012A0D4C8D00657803 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160CF0002A0D4C8D00657803 /* SessionManager.swift */; };
 		160CF0042A0D4CC500657803 /* Session.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 160CF0022A0D4CC500657803 /* Session.xcdatamodeld */; };
 		160CF0062A0E564300657803 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160CF0052A0E564300657803 /* TabBarViewController.swift */; };
+		160CF0092A0FA25900657803 /* InformationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160CF0072A0FA25900657803 /* InformationTableViewCell.swift */; };
+		160CF00A2A0FA25900657803 /* InformationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 160CF0082A0FA25900657803 /* InformationTableViewCell.xib */; };
+		160CF00D2A1253A700657803 /* ChartValueFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160CF00C2A1253A700657803 /* ChartValueFormatter.swift */; };
+		160CF00F2A138D4F00657803 /* NotificationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160CF00E2A138D4F00657803 /* NotificationsManager.swift */; };
 		16AAA7162A091D1A00AE8E3E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16AAA7152A091D1A00AE8E3E /* AppDelegate.swift */; };
 		16AAA7182A091D1A00AE8E3E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16AAA7172A091D1A00AE8E3E /* SceneDelegate.swift */; };
 		16AAA71A2A091D1A00AE8E3E /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16AAA7192A091D1A00AE8E3E /* ActivityViewController.swift */; };
@@ -20,6 +24,9 @@
 		16AAA7372A091D1B00AE8E3E /* PomodomoLightUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16AAA7362A091D1B00AE8E3E /* PomodomoLightUITests.swift */; };
 		16AAA7392A091D1B00AE8E3E /* PomodomoLightUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16AAA7382A091D1B00AE8E3E /* PomodomoLightUITestsLaunchTests.swift */; };
 		16AAA7462A09208A00AE8E3E /* CircularProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16AAA7452A09208A00AE8E3E /* CircularProgressBar.swift */; };
+		16B0CECA2A20D36700AEAAD2 /* ActivityViewController+Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B0CEC92A20D36700AEAAD2 /* ActivityViewController+Timer.swift */; };
+		16B0CECE2A20D60D00AEAAD2 /* ActivityViewController+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B0CECD2A20D60D00AEAAD2 /* ActivityViewController+UI.swift */; };
+		16B0CED02A20D74300AEAAD2 /* ActivityViewController+LifeCycle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B0CECF2A20D74300AEAAD2 /* ActivityViewController+LifeCycle.swift */; };
 		16FD00562A0A1F3300CB3F39 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FD00552A0A1F3300CB3F39 /* HistoryViewController.swift */; };
 		16FD00582A0B7DF500CB3F39 /* BackgroundVoicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FD00572A0B7DF500CB3F39 /* BackgroundVoicesViewController.swift */; };
 		16FD00602A0B851800CB3F39 /* BackgroundNoisesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FD005E2A0B851800CB3F39 /* BackgroundNoisesCollectionViewCell.swift */; };
@@ -59,6 +66,11 @@
 		160CF0002A0D4C8D00657803 /* SessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
 		160CF0032A0D4CC500657803 /* Session.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Session.xcdatamodel; sourceTree = "<group>"; };
 		160CF0052A0E564300657803 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		160CF0072A0FA25900657803 /* InformationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationTableViewCell.swift; sourceTree = "<group>"; };
+		160CF0082A0FA25900657803 /* InformationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InformationTableViewCell.xib; sourceTree = "<group>"; };
+		160CF00C2A1253A700657803 /* ChartValueFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartValueFormatter.swift; sourceTree = "<group>"; };
+		160CF00E2A138D4F00657803 /* NotificationsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsManager.swift; sourceTree = "<group>"; };
+		167AD25B2A1E791F005C53E7 /* PomodomoLight.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PomodomoLight.entitlements; sourceTree = "<group>"; };
 		16AAA7122A091D1A00AE8E3E /* PomodomoLight.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PomodomoLight.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		16AAA7152A091D1A00AE8E3E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		16AAA7172A091D1A00AE8E3E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -73,6 +85,9 @@
 		16AAA7362A091D1B00AE8E3E /* PomodomoLightUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PomodomoLightUITests.swift; sourceTree = "<group>"; };
 		16AAA7382A091D1B00AE8E3E /* PomodomoLightUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PomodomoLightUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		16AAA7452A09208A00AE8E3E /* CircularProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressBar.swift; sourceTree = "<group>"; };
+		16B0CEC92A20D36700AEAAD2 /* ActivityViewController+Timer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActivityViewController+Timer.swift"; sourceTree = "<group>"; };
+		16B0CECD2A20D60D00AEAAD2 /* ActivityViewController+UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActivityViewController+UI.swift"; sourceTree = "<group>"; };
+		16B0CECF2A20D74300AEAAD2 /* ActivityViewController+LifeCycle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActivityViewController+LifeCycle.swift"; sourceTree = "<group>"; };
 		16FD00552A0A1F3300CB3F39 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		16FD00572A0B7DF500CB3F39 /* BackgroundVoicesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundVoicesViewController.swift; sourceTree = "<group>"; };
 		16FD005E2A0B851800CB3F39 /* BackgroundNoisesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundNoisesCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -125,6 +140,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		160CF00B2A12539100657803 /* Other Classes */ = {
+			isa = PBXGroup;
+			children = (
+				160CF00C2A1253A700657803 /* ChartValueFormatter.swift */,
+			);
+			path = "Other Classes";
+			sourceTree = "<group>";
+		};
 		16AAA7092A091D1A00AE8E3E = {
 			isa = PBXGroup;
 			children = (
@@ -150,17 +173,15 @@
 		16AAA7142A091D1A00AE8E3E /* PomodomoLight */ = {
 			isa = PBXGroup;
 			children = (
+				167AD25B2A1E791F005C53E7 /* PomodomoLight.entitlements */,
+				160CF00B2A12539100657803 /* Other Classes */,
 				16FD00632A0B976800CB3F39 /* Sounds */,
-				16FD00592A0B7E1400CB3F39 /* Collection View Cells */,
+				16FD00592A0B7E1400CB3F39 /* Cells */,
+				16B0CEC62A20D30B00AEAAD2 /* Managers */,
+				16B0CEC72A20D32500AEAAD2 /* View Contollers */,
 				16AAA7152A091D1A00AE8E3E /* AppDelegate.swift */,
-				16FD00742A0BB76400CB3F39 /* SettingsViewController.swift */,
 				16AAA7172A091D1A00AE8E3E /* SceneDelegate.swift */,
-				16AAA7192A091D1A00AE8E3E /* ActivityViewController.swift */,
-				16FD00572A0B7DF500CB3F39 /* BackgroundVoicesViewController.swift */,
-				16FD00552A0A1F3300CB3F39 /* HistoryViewController.swift */,
 				16AAA7452A09208A00AE8E3E /* CircularProgressBar.swift */,
-				160CF0002A0D4C8D00657803 /* SessionManager.swift */,
-				160CF0052A0E564300657803 /* TabBarViewController.swift */,
 				16AAA71B2A091D1A00AE8E3E /* Main.storyboard */,
 				16AAA71E2A091D1B00AE8E3E /* Assets.xcassets */,
 				16AAA7202A091D1B00AE8E3E /* LaunchScreen.storyboard */,
@@ -187,13 +208,47 @@
 			path = PomodomoLightUITests;
 			sourceTree = "<group>";
 		};
-		16FD00592A0B7E1400CB3F39 /* Collection View Cells */ = {
+		16B0CEC62A20D30B00AEAAD2 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				160CF00E2A138D4F00657803 /* NotificationsManager.swift */,
+				160CF0002A0D4C8D00657803 /* SessionManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		16B0CEC72A20D32500AEAAD2 /* View Contollers */ = {
+			isa = PBXGroup;
+			children = (
+				16B0CEC82A20D34700AEAAD2 /* Activity View Contoller Extensions */,
+				16FD00742A0BB76400CB3F39 /* SettingsViewController.swift */,
+				16AAA7192A091D1A00AE8E3E /* ActivityViewController.swift */,
+				16FD00572A0B7DF500CB3F39 /* BackgroundVoicesViewController.swift */,
+				16FD00552A0A1F3300CB3F39 /* HistoryViewController.swift */,
+				160CF0052A0E564300657803 /* TabBarViewController.swift */,
+			);
+			path = "View Contollers";
+			sourceTree = "<group>";
+		};
+		16B0CEC82A20D34700AEAAD2 /* Activity View Contoller Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				16B0CEC92A20D36700AEAAD2 /* ActivityViewController+Timer.swift */,
+				16B0CECD2A20D60D00AEAAD2 /* ActivityViewController+UI.swift */,
+				16B0CECF2A20D74300AEAAD2 /* ActivityViewController+LifeCycle.swift */,
+			);
+			path = "Activity View Contoller Extensions";
+			sourceTree = "<group>";
+		};
+		16FD00592A0B7E1400CB3F39 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
 				16FD005E2A0B851800CB3F39 /* BackgroundNoisesCollectionViewCell.swift */,
 				16FD005F2A0B851800CB3F39 /* BackgroundNoisesCollectionViewCell.xib */,
+				160CF0072A0FA25900657803 /* InformationTableViewCell.swift */,
+				160CF0082A0FA25900657803 /* InformationTableViewCell.xib */,
 			);
-			path = "Collection View Cells";
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		16FD00632A0B976800CB3F39 /* Sounds */ = {
@@ -344,6 +399,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				16AAA7222A091D1B00AE8E3E /* LaunchScreen.storyboard in Resources */,
+				160CF00A2A0FA25900657803 /* InformationTableViewCell.xib in Resources */,
 				16FD00712A0B98C000CB3F39 /* droplets.mp3 in Resources */,
 				16FD00672A0B97BE00CB3F39 /* forest.mp3 in Resources */,
 				16FD006D2A0B982700CB3F39 /* wind.mp3 in Resources */,
@@ -485,14 +541,20 @@
 				16AAA71A2A091D1A00AE8E3E /* ActivityViewController.swift in Sources */,
 				16AAA7162A091D1A00AE8E3E /* AppDelegate.swift in Sources */,
 				160CF0062A0E564300657803 /* TabBarViewController.swift in Sources */,
+				160CF00D2A1253A700657803 /* ChartValueFormatter.swift in Sources */,
 				160CF0012A0D4C8D00657803 /* SessionManager.swift in Sources */,
 				16AAA7182A091D1A00AE8E3E /* SceneDelegate.swift in Sources */,
 				160CF0042A0D4CC500657803 /* Session.xcdatamodeld in Sources */,
+				160CF0092A0FA25900657803 /* InformationTableViewCell.swift in Sources */,
+				160CF00F2A138D4F00657803 /* NotificationsManager.swift in Sources */,
 				16FD00562A0A1F3300CB3F39 /* HistoryViewController.swift in Sources */,
+				16B0CED02A20D74300AEAAD2 /* ActivityViewController+LifeCycle.swift in Sources */,
 				16AAA7462A09208A00AE8E3E /* CircularProgressBar.swift in Sources */,
 				16FD00602A0B851800CB3F39 /* BackgroundNoisesCollectionViewCell.swift in Sources */,
 				16FD00582A0B7DF500CB3F39 /* BackgroundVoicesViewController.swift in Sources */,
+				16B0CECA2A20D36700AEAAD2 /* ActivityViewController+Timer.swift in Sources */,
 				16FD00752A0BB76400CB3F39 /* SettingsViewController.swift in Sources */,
+				16B0CECE2A20D60D00AEAAD2 /* ActivityViewController+UI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -598,7 +660,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -652,7 +714,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -668,6 +730,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = PomodomoLight/PomodomoLight.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 7WX6W95X32;
@@ -699,6 +762,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = PomodomoLight/PomodomoLight.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 7WX6W95X32;

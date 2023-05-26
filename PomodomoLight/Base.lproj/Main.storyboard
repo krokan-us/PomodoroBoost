@@ -138,7 +138,7 @@
                                                     </label>
                                                 </subviews>
                                             </stackView>
-                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="30" minValue="15" maxValue="60" translatesAutoresizingMaskIntoConstraints="NO" id="G7Z-xb-Z0H">
+                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="30" minValue="5" maxValue="60" translatesAutoresizingMaskIntoConstraints="NO" id="G7Z-xb-Z0H">
                                                 <rect key="frame" x="-2" y="20.333333333333314" width="357" height="30.666666666666671"/>
                                                 <color key="tintColor" systemColor="systemGreenColor"/>
                                                 <connections>
