@@ -71,7 +71,7 @@ class BackgroundVoicesViewController: UIViewController, UICollectionViewDelegate
         cell.contentView.layer.masksToBounds = true
         cell.layer.cornerRadius = 20
         cell.layer.masksToBounds = true
-        cell.layer.borderWidth = 3.0 // Set the border width of the cell
+        cell.layer.borderWidth = 2.0 // Set the border width of the cell
         cell.layer.borderColor = UIColor.red.cgColor // Set the border color of the cell
 
         cell.noiseNameLabel.text = noises[indexPath.row]
