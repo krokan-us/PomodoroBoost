@@ -9,7 +9,7 @@ import AVFoundation
 import Foundation
 import UIKit
 
-extension ActivityViewController{
+extension ActivityViewController {
     func startTimer() {
         // Invalidate and set timer to nil before starting a new timer
         hasTimerStarted = true
@@ -61,13 +61,19 @@ extension ActivityViewController{
         remainingShortBreakTime = completedSessions == 4 ? longBreakTime : shortBreakTime
         
         updateTimeLabel()
-        
-        completedSessions += 1 // Increment the completed sessions count
-        updateIndicators() // Update the indicators
+
         print("Completed sessions: " + String(completedSessions))
         print("Break duration: " + String(remainingShortBreakTime))
+
+        // Always start a timer, regardless of the number of completed sessions
         startTimer()
-        
+
+        // Only reset the completed sessions count and update the indicators when 4 sessions have been completed
+        if completedSessions == 4 {
+            self.updateIndicators() // Update the indicators
+            self.completedSessions = 0 // Reset the completed sessions count
+        }
+
         SessionManager.shared.saveSession(duration: Int(sessionTime))
         
         // Hide the reset button during breaks
@@ -163,7 +169,6 @@ extension ActivityViewController{
             } else {
                 if self.remainingSessionTime <= 0 {
                     self.timer?.invalidate()
-                    self.startBreak()
                     self.playTimerEndedSound()
                     SessionManager.shared.updatePomodorosCompleted(count: 1)
                     SessionManager.shared.updatePomodorosMinutes(duration: self.sessionTime)
@@ -173,6 +178,10 @@ extension ActivityViewController{
                     if internalNotificationsEnabled{
                         NotificationManager.shared.sendSessionEndedNotification() // Send "sessionEnded" notification
                     }
+                    // Increment the completed sessions count
+                    self.completedSessions += 1
+                    self.updateIndicators()
+                    self.startBreak()
                 }
             }
         }
