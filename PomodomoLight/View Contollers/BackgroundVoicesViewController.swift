@@ -17,6 +17,13 @@ class BackgroundVoicesViewController: UIViewController, UICollectionViewDelegate
         let nib = UINib(nibName: "BackgroundNoisesCollectionViewCell", bundle: nil)
         backgroundVoicesCollectionView.register(nib, forCellWithReuseIdentifier: "backgroundNoiceCell")
         
+        do {
+            try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default, options: .mixWithOthers)
+            try AVAudioSession.sharedInstance().setActive(true)
+        } catch {
+            print("Failed to configure audio session: \(error.localizedDescription)")
+        }
+        
         // Set collection view delegate and data source
         backgroundVoicesCollectionView.delegate = self
         backgroundVoicesCollectionView.dataSource = self
@@ -80,6 +87,14 @@ class BackgroundVoicesViewController: UIViewController, UICollectionViewDelegate
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        do {
+            try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default, options: .mixWithOthers)
+            try AVAudioSession.sharedInstance().setActive(true)
+        } catch {
+            print("Failed to configure audio session for background playback: \(error.localizedDescription)")
+        }
+
         
         // Determine if the selected item is currently playing
         let selectedItemIsPlaying = audioPlayers[indexPath.row].isPlaying
