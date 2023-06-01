@@ -59,6 +59,8 @@ extension ActivityViewController {
         
         // Check if 4 sessions are completed and set break duration accordingly
         remainingShortBreakTime = completedSessions == 4 ? longBreakTime : shortBreakTime
+        shortBreakTime = completedSessions == 4 ? shortBreakTime : longBreakTime
+
         
         updateTimeLabel()
 
@@ -149,7 +151,21 @@ extension ActivityViewController {
             
             self.updateTimeLabel()
             
-            let progress = CGFloat(1 - (self.isOnBreak ? self.remainingShortBreakTime : self.remainingSessionTime) / (self.isOnBreak ? self.shortBreakTime : self.sessionTime))
+            var progress: CGFloat
+            
+            if self.isOnBreak{
+                print(self.completedSessions)
+                if self.completedSessions == 0 {
+                    progress = CGFloat(1 - self.remainingShortBreakTime / self.longBreakTime)
+                } else {
+                    progress = CGFloat(1 - self.remainingShortBreakTime / self.shortBreakTime)
+                }
+            }else{
+                progress = CGFloat(1 - self.remainingSessionTime / self.sessionTime)
+            }
+
+            
+            print(progress)
             self.progressBar.progress = progress
             
             if self.isOnBreak {
@@ -162,7 +178,7 @@ extension ActivityViewController {
                     NotificationCenter.default.post(name: .breakCompleted, object: nil)
                     let defaults = UserDefaults.standard
                     let internalNotificationsEnabled = defaults.bool(forKey: "internalNotificationsEnabled")
-                    if internalNotificationsEnabled{
+                    if internalNotificationsEnabled {
                         NotificationManager.shared.sendBreakEndedNotification() // Send "breakEnded" notification
                     }
                 }
@@ -175,7 +191,7 @@ extension ActivityViewController {
                     NotificationCenter.default.post(name: .sessionCompleted, object: nil)
                     let defaults = UserDefaults.standard
                     let internalNotificationsEnabled = defaults.bool(forKey: "internalNotificationsEnabled")
-                    if internalNotificationsEnabled{
+                    if internalNotificationsEnabled {
                         NotificationManager.shared.sendSessionEndedNotification() // Send "sessionEnded" notification
                     }
                     // Increment the completed sessions count
